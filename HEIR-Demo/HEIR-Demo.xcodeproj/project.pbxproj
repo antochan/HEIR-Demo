@@ -20,6 +20,18 @@
 		8A94AF4C26BCFCDC0012BD79 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF4B26BCFCDC0012BD79 /* AuthViewModel.swift */; };
 		8A94AF4E26BCFCE80012BD79 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF4D26BCFCE80012BD79 /* AuthViewController.swift */; };
 		8A94AF5026BCFCF00012BD79 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF4F26BCFCF00012BD79 /* AuthCoordinator.swift */; };
+		8A94AF5326BD084A0012BD79 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF5226BD084A0012BD79 /* Extensions.swift */; };
+		8A94AF5A26BD09C90012BD79 /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF5526BD09C90012BD79 /* SFProText-Semibold.ttf */; };
+		8A94AF5B26BD09C90012BD79 /* SFProText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF5626BD09C90012BD79 /* SFProText-Light.ttf */; };
+		8A94AF5C26BD09C90012BD79 /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF5726BD09C90012BD79 /* SFProText-Medium.ttf */; };
+		8A94AF5D26BD09C90012BD79 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF5826BD09C90012BD79 /* Fonts.swift */; };
+		8A94AF5E26BD09C90012BD79 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF5926BD09C90012BD79 /* SFProText-Regular.ttf */; };
+		8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6126BD0C350012BD79 /* Pressable.swift */; };
+		8A94AF6626BD0C350012BD79 /* PressScalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6226BD0C350012BD79 /* PressScalable.swift */; };
+		8A94AF6726BD0C350012BD79 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6326BD0C350012BD79 /* Components.swift */; };
+		8A94AF6826BD0C350012BD79 /* PressHighlightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6426BD0C350012BD79 /* PressHighlightable.swift */; };
+		8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */; };
+		8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6B26BD0C800012BD79 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +71,18 @@
 		8A94AF4B26BCFCDC0012BD79 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		8A94AF4D26BCFCE80012BD79 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8A94AF4F26BCFCF00012BD79 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		8A94AF5226BD084A0012BD79 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8A94AF5526BD09C90012BD79 /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.ttf"; sourceTree = "<group>"; };
+		8A94AF5626BD09C90012BD79 /* SFProText-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.ttf"; sourceTree = "<group>"; };
+		8A94AF5726BD09C90012BD79 /* SFProText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Medium.ttf"; sourceTree = "<group>"; };
+		8A94AF5826BD09C90012BD79 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		8A94AF5926BD09C90012BD79 /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
+		8A94AF6126BD0C350012BD79 /* Pressable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pressable.swift; sourceTree = "<group>"; };
+		8A94AF6226BD0C350012BD79 /* PressScalable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressScalable.swift; sourceTree = "<group>"; };
+		8A94AF6326BD0C350012BD79 /* Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		8A94AF6426BD0C350012BD79 /* PressHighlightable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressHighlightable.swift; sourceTree = "<group>"; };
+		8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
+		8A94AF6B26BD0C800012BD79 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +135,7 @@
 			children = (
 				8A94AF1026BCFA4D0012BD79 /* AppDelegate.swift */,
 				8A94AF1226BCFA4D0012BD79 /* SceneDelegate.swift */,
+				8A94AF5F26BD0C030012BD79 /* Components */,
 				8A94AF4026BCFBCA0012BD79 /* Coordinator */,
 				8A94AF4526BCFC090012BD79 /* Scenes */,
 				8A94AF1926BCFA4F0012BD79 /* Assets.xcassets */,
@@ -152,6 +177,7 @@
 				8A94AF1B26BCFA4F0012BD79 /* LaunchScreen.storyboard */,
 				8A94AF4626BCFC210012BD79 /* AppCoordinator.swift */,
 				8A94AF4826BCFCBC0012BD79 /* Auth */,
+				8A94AF5126BD08410012BD79 /* Utilities */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -165,6 +191,48 @@
 				8A94AF4926BCFCD30012BD79 /* AuthView.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		8A94AF5126BD08410012BD79 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF5426BD09B40012BD79 /* Fonts */,
+				8A94AF5226BD084A0012BD79 /* Extensions.swift */,
+				8A94AF6B26BD0C800012BD79 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8A94AF5426BD09B40012BD79 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF5826BD09C90012BD79 /* Fonts.swift */,
+				8A94AF5626BD09C90012BD79 /* SFProText-Light.ttf */,
+				8A94AF5726BD09C90012BD79 /* SFProText-Medium.ttf */,
+				8A94AF5926BD09C90012BD79 /* SFProText-Regular.ttf */,
+				8A94AF5526BD09C90012BD79 /* SFProText-Semibold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8A94AF5F26BD0C030012BD79 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF6026BD0C210012BD79 /* Protocols */,
+				8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8A94AF6026BD0C210012BD79 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF6326BD0C350012BD79 /* Components.swift */,
+				8A94AF6126BD0C350012BD79 /* Pressable.swift */,
+				8A94AF6426BD0C350012BD79 /* PressHighlightable.swift */,
+				8A94AF6226BD0C350012BD79 /* PressScalable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +339,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A94AF1D26BCFA4F0012BD79 /* LaunchScreen.storyboard in Resources */,
+				8A94AF5E26BD09C90012BD79 /* SFProText-Regular.ttf in Resources */,
 				8A94AF1A26BCFA4F0012BD79 /* Assets.xcassets in Resources */,
+				8A94AF5A26BD09C90012BD79 /* SFProText-Semibold.ttf in Resources */,
+				8A94AF5B26BD09C90012BD79 /* SFProText-Light.ttf in Resources */,
+				8A94AF5C26BD09C90012BD79 /* SFProText-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +369,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A94AF4426BCFBEE0012BD79 /* Coordinator.swift in Sources */,
+				8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */,
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
 				8A94AF4A26BCFCD30012BD79 /* AuthView.swift in Sources */,
+				8A94AF6726BD0C350012BD79 /* Components.swift in Sources */,
+				8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */,
 				8A94AF4C26BCFCDC0012BD79 /* AuthViewModel.swift in Sources */,
 				8A94AF4E26BCFCE80012BD79 /* AuthViewController.swift in Sources */,
+				8A94AF6826BD0C350012BD79 /* PressHighlightable.swift in Sources */,
+				8A94AF5326BD084A0012BD79 /* Extensions.swift in Sources */,
 				8A94AF4726BCFC210012BD79 /* AppCoordinator.swift in Sources */,
 				8A94AF4226BCFBE60012BD79 /* RootCoordinator.swift in Sources */,
+				8A94AF6626BD0C350012BD79 /* PressScalable.swift in Sources */,
+				8A94AF5D26BD09C90012BD79 /* Fonts.swift in Sources */,
 				8A94AF5026BCFCF00012BD79 /* AuthCoordinator.swift in Sources */,
 				8A94AF1326BCFA4D0012BD79 /* SceneDelegate.swift in Sources */,
+				8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

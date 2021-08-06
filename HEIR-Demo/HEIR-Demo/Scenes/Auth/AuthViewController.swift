@@ -31,13 +31,29 @@ final class AuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupActions()
     }
     
+    func setupActions() {
+        authView.loginButton.addTarget(self, action: #selector(logInTapped), for: .touchUpInside)
+    }
 }
 
 // MARK: - AuthViewModelViewDelegate
 
 extension AuthViewController: AuthViewModelViewDelegate {
 
+}
+
+// MARK: - Actions
+
+extension AuthViewController {
+    
+    @objc func logInTapped() {
+        authView.loginButton.loadingIndicator(true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.authView.loginButton.loadingIndicator(false)
+        }
+    }
+    
 }
