@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7264CD09B1816C458C3A13CF /* Pods_HEIR_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B3175918A79A745D175B86 /* Pods_HEIR_Demo.framework */; };
+		867D9E1CE2C5672B8F68D71E /* Pods_HEIR_Demo_HEIR_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35274B262163B6149E9A9DC1 /* Pods_HEIR_Demo_HEIR_DemoUITests.framework */; };
 		8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF1026BCFA4D0012BD79 /* AppDelegate.swift */; };
 		8A94AF1326BCFA4D0012BD79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF1226BCFA4D0012BD79 /* SceneDelegate.swift */; };
 		8A94AF1A26BCFA4F0012BD79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF1926BCFA4F0012BD79 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		8A94AF6826BD0C350012BD79 /* PressHighlightable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6426BD0C350012BD79 /* PressHighlightable.swift */; };
 		8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */; };
 		8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6B26BD0C800012BD79 /* Constants.swift */; };
+		8A94AF6E26BD13F70012BD79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF6D26BD13F70012BD79 /* GoogleService-Info.plist */; };
+		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11492D8742104BBDBB25CD82 /* Pods-HEIR-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HEIR-DemoTests.release.xcconfig"; path = "Target Support Files/Pods-HEIR-DemoTests/Pods-HEIR-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		1CA92F635B7C4ECFCC29F10B /* Pods-HEIR-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HEIR-Demo.release.xcconfig"; path = "Target Support Files/Pods-HEIR-Demo/Pods-HEIR-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		35274B262163B6149E9A9DC1 /* Pods_HEIR_Demo_HEIR_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_Demo_HEIR_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51AB9C55092792E69CC40B24 /* Pods-HEIR-Demo-HEIR-DemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HEIR-Demo-HEIR-DemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-HEIR-Demo-HEIR-DemoUITests/Pods-HEIR-Demo-HEIR-DemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5E0DEB51985A20FF9C613737 /* Pods-HEIR-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HEIR-Demo.debug.xcconfig"; path = "Target Support Files/Pods-HEIR-Demo/Pods-HEIR-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		76C2B941721FDB6BDF5D8F5C /* Pods-HEIR-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HEIR-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-HEIR-DemoTests/Pods-HEIR-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		80B3175918A79A745D175B86 /* Pods_HEIR_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D34F48AD28DDC1B83162B4 /* Pods-HEIR-Demo-HEIR-DemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HEIR-Demo-HEIR-DemoUITests.release.xcconfig"; path = "Target Support Files/Pods-HEIR-Demo-HEIR-DemoUITests/Pods-HEIR-Demo-HEIR-DemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A94AF0D26BCFA4D0012BD79 /* HEIR-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HEIR-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A94AF1026BCFA4D0012BD79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A94AF1226BCFA4D0012BD79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +95,8 @@
 		8A94AF6426BD0C350012BD79 /* PressHighlightable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressHighlightable.swift; sourceTree = "<group>"; };
 		8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 		8A94AF6B26BD0C800012BD79 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8A94AF6D26BD13F70012BD79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7264CD09B1816C458C3A13CF /* Pods_HEIR_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,12 +120,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867D9E1CE2C5672B8F68D71E /* Pods_HEIR_Demo_HEIR_DemoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C6C1BF8549A90F42505C24D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80B3175918A79A745D175B86 /* Pods_HEIR_Demo.framework */,
+				35274B262163B6149E9A9DC1 /* Pods_HEIR_Demo_HEIR_DemoUITests.framework */,
+				ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CBDE62780F67C7A34C86C61 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E0DEB51985A20FF9C613737 /* Pods-HEIR-Demo.debug.xcconfig */,
+				1CA92F635B7C4ECFCC29F10B /* Pods-HEIR-Demo.release.xcconfig */,
+				51AB9C55092792E69CC40B24 /* Pods-HEIR-Demo-HEIR-DemoUITests.debug.xcconfig */,
+				88D34F48AD28DDC1B83162B4 /* Pods-HEIR-Demo-HEIR-DemoUITests.release.xcconfig */,
+				76C2B941721FDB6BDF5D8F5C /* Pods-HEIR-DemoTests.debug.xcconfig */,
+				11492D8742104BBDBB25CD82 /* Pods-HEIR-DemoTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8A94AF0426BCFA4C0012BD79 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +158,8 @@
 				8A94AF2626BCFA4F0012BD79 /* HEIR-DemoTests */,
 				8A94AF3126BCFA4F0012BD79 /* HEIR-DemoUITests */,
 				8A94AF0E26BCFA4D0012BD79 /* Products */,
+				3CBDE62780F67C7A34C86C61 /* Pods */,
+				2C6C1BF8549A90F42505C24D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +183,7 @@
 				8A94AF4526BCFC090012BD79 /* Scenes */,
 				8A94AF1926BCFA4F0012BD79 /* Assets.xcassets */,
 				8A94AF1E26BCFA4F0012BD79 /* Info.plist */,
+				8A94AF6D26BD13F70012BD79 /* GoogleService-Info.plist */,
 			);
 			path = "HEIR-Demo";
 			sourceTree = "<group>";
@@ -242,9 +286,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A94AF3726BCFA4F0012BD79 /* Build configuration list for PBXNativeTarget "HEIR-Demo" */;
 			buildPhases = (
+				CD3A556671B58FD10CBD812E /* [CP] Check Pods Manifest.lock */,
 				8A94AF0926BCFA4D0012BD79 /* Sources */,
 				8A94AF0A26BCFA4D0012BD79 /* Frameworks */,
 				8A94AF0B26BCFA4D0012BD79 /* Resources */,
+				EECD3C74813A25ED868F3FC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,6 +305,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A94AF3A26BCFA4F0012BD79 /* Build configuration list for PBXNativeTarget "HEIR-DemoTests" */;
 			buildPhases = (
+				F24F1F6AF8EC5B11359919CB /* [CP] Check Pods Manifest.lock */,
 				8A94AF1F26BCFA4F0012BD79 /* Sources */,
 				8A94AF2026BCFA4F0012BD79 /* Frameworks */,
 				8A94AF2126BCFA4F0012BD79 /* Resources */,
@@ -277,9 +324,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A94AF3D26BCFA4F0012BD79 /* Build configuration list for PBXNativeTarget "HEIR-DemoUITests" */;
 			buildPhases = (
+				6CD7AC9E0AC34D6FD49E7A47 /* [CP] Check Pods Manifest.lock */,
 				8A94AF2A26BCFA4F0012BD79 /* Sources */,
 				8A94AF2B26BCFA4F0012BD79 /* Frameworks */,
 				8A94AF2C26BCFA4F0012BD79 /* Resources */,
+				302CE3D997EA1D8A647E880A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,6 +393,7 @@
 				8A94AF5A26BD09C90012BD79 /* SFProText-Semibold.ttf in Resources */,
 				8A94AF5B26BD09C90012BD79 /* SFProText-Light.ttf in Resources */,
 				8A94AF5C26BD09C90012BD79 /* SFProText-Medium.ttf in Resources */,
+				8A94AF6E26BD13F70012BD79 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +412,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		302CE3D997EA1D8A647E880A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HEIR-Demo-HEIR-DemoUITests/Pods-HEIR-Demo-HEIR-DemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HEIR-Demo-HEIR-DemoUITests/Pods-HEIR-Demo-HEIR-DemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HEIR-Demo-HEIR-DemoUITests/Pods-HEIR-Demo-HEIR-DemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CD7AC9E0AC34D6FD49E7A47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HEIR-Demo-HEIR-DemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD3A556671B58FD10CBD812E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HEIR-Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EECD3C74813A25ED868F3FC7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HEIR-Demo/Pods-HEIR-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HEIR-Demo/Pods-HEIR-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HEIR-Demo/Pods-HEIR-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F24F1F6AF8EC5B11359919CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HEIR-DemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A94AF0926BCFA4D0012BD79 /* Sources */ = {
@@ -549,6 +702,7 @@
 		};
 		8A94AF3826BCFA4F0012BD79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E0DEB51985A20FF9C613737 /* Pods-HEIR-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -568,6 +722,7 @@
 		};
 		8A94AF3926BCFA4F0012BD79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CA92F635B7C4ECFCC29F10B /* Pods-HEIR-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -587,6 +742,7 @@
 		};
 		8A94AF3B26BCFA4F0012BD79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76C2B941721FDB6BDF5D8F5C /* Pods-HEIR-DemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -609,6 +765,7 @@
 		};
 		8A94AF3C26BCFA4F0012BD79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11492D8742104BBDBB25CD82 /* Pods-HEIR-DemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -631,6 +788,7 @@
 		};
 		8A94AF3E26BCFA4F0012BD79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51AB9C55092792E69CC40B24 /* Pods-HEIR-Demo-HEIR-DemoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -651,6 +809,7 @@
 		};
 		8A94AF3F26BCFA4F0012BD79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88D34F48AD28DDC1B83162B4 /* Pods-HEIR-Demo-HEIR-DemoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
