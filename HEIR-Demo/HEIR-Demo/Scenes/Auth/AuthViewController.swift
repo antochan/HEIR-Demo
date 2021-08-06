@@ -42,7 +42,13 @@ final class AuthViewController: UIViewController {
 // MARK: - AuthViewModelViewDelegate
 
 extension AuthViewController: AuthViewModelViewDelegate {
-
+    func loading(_ isLoading: Bool) {
+        authView.loginButton.loadingIndicator(isLoading)
+    }
+    
+    func presentError(title: String, message: String) {
+        displayAlert(message: message, title: title)
+    }
 }
 
 // MARK: - Actions
@@ -50,9 +56,10 @@ extension AuthViewController: AuthViewModelViewDelegate {
 extension AuthViewController {
     
     @objc func logInTapped() {
-        authView.loginButton.loadingIndicator(true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.authView.loginButton.loadingIndicator(false)
+        if let controller = navigationController {
+            viewModel?.login(with: controller,
+                             email: authView.emailTextField.text,
+                             password: authView.passwordTextField.text)
         }
     }
     

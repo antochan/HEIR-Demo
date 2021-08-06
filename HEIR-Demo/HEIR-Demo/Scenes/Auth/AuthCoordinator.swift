@@ -12,15 +12,17 @@ final class AuthCoordinator: RootCoordinator, Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
+    private let authService: AuthService
     
     lazy var authViewModel: AuthViewModel? = {
-        let viewModel = AuthViewModel()
+        let viewModel = AuthViewModel(authService: authService)
         viewModel.coordinatorDelegate = self
         return viewModel
     }()
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, authService: AuthService) {
         self.navigationController = navigationController
+        self.authService = authService
     }
     
     func start() {

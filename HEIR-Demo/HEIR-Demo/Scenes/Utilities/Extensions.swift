@@ -105,3 +105,59 @@ extension UIButton {
         }
     }
 }
+
+extension UIViewController {
+    func hideKeyboardWhenTapped(on view: UIView) {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    /// This function displays a UIAlertView string for a given `message: String`.
+    ///
+    /// - Warning: Make sure this is called on the main thread
+    ///
+    /// Usage:
+    ///
+    ///     displayAlert("Your Message Here)
+    func displayAlert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        OKAction.setValue(UIColor.black, forKey: "titleTextColor")
+        alertController.addAction(OKAction)
+        if let vc = self.presentedViewController, vc is UIAlertController {
+            vc.dismiss(animated: true) {
+                self.present(alertController, animated: true, completion: nil)
+            }
+        } else {
+            present(alertController, animated: true)
+        }
+    }
+    
+    func displayLoading(message: String?) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = .medium
+        loadingIndicator.startAnimating()
+
+        alert.view.addSubview(loadingIndicator)
+        if let vc = self.presentedViewController, vc is UIAlertController {
+            vc.dismiss(animated: true) {
+                self.present(alert, animated: true)
+            }
+        } else {
+            present(alert, animated: true)
+        }
+    }
+    
+    func dismissAlert(completion: (() -> Void)? = nil) {
+        if let vc = self.presentedViewController, vc is UIAlertController {
+            dismiss(animated: true, completion: completion)
+        }
+    }
+}

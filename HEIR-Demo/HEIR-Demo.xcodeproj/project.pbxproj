@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */; };
 		8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF6B26BD0C800012BD79 /* Constants.swift */; };
 		8A94AF6E26BD13F70012BD79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A94AF6D26BD13F70012BD79 /* GoogleService-Info.plist */; };
+		8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF7026BD184D0012BD79 /* AuthService.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
 		8A94AF6B26BD0C800012BD79 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A94AF6D26BD13F70012BD79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8A94AF7026BD184D0012BD79 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,7 +149,6 @@
 				76C2B941721FDB6BDF5D8F5C /* Pods-HEIR-DemoTests.debug.xcconfig */,
 				11492D8742104BBDBB25CD82 /* Pods-HEIR-DemoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +182,7 @@
 				8A94AF5F26BD0C030012BD79 /* Components */,
 				8A94AF4026BCFBCA0012BD79 /* Coordinator */,
 				8A94AF4526BCFC090012BD79 /* Scenes */,
+				8A94AF6F26BD183E0012BD79 /* WebService */,
 				8A94AF1926BCFA4F0012BD79 /* Assets.xcassets */,
 				8A94AF1E26BCFA4F0012BD79 /* Info.plist */,
 				8A94AF6D26BD13F70012BD79 /* GoogleService-Info.plist */,
@@ -277,6 +279,14 @@
 				8A94AF6226BD0C350012BD79 /* PressScalable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8A94AF6F26BD183E0012BD79 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF7026BD184D0012BD79 /* AuthService.swift */,
+			);
+			path = WebService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,6 +534,7 @@
 				8A94AF4426BCFBEE0012BD79 /* Coordinator.swift in Sources */,
 				8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */,
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
+				8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */,
 				8A94AF4A26BCFCD30012BD79 /* AuthView.swift in Sources */,
 				8A94AF6726BD0C350012BD79 /* Components.swift in Sources */,
 				8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */,
