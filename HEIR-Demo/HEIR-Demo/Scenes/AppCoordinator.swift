@@ -22,7 +22,9 @@ final class AppCoordinator: RootCoordinator {
         guard let window = window else { return }
         let navigationController = UINavigationController()
         
-        let authCoordinator = AuthCoordinator(navigationController: navigationController, authService: AuthService())
+        let authCoordinator = AuthCoordinator(navigationController: navigationController,
+                                              authService: AuthService(),
+                                              userService: UserService())
         authCoordinator.start()
         
         window.rootViewController = navigationController

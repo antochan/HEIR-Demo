@@ -124,7 +124,7 @@ extension UIViewController {
     /// Usage:
     ///
     ///     displayAlert("Your Message Here)
-    func displayAlert(message: String, title: String = "") {
+    func displayAlert(message: String?, title: String = "") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         OKAction.setValue(UIColor.black, forKey: "titleTextColor")
@@ -160,4 +160,9 @@ extension UIViewController {
             dismiss(animated: true, completion: completion)
         }
     }
+}
+
+extension Error {
+    var code: Int { return (self as NSError).code }
+    var domain: String { return (self as NSError).domain }
 }

@@ -46,7 +46,7 @@ extension AuthViewController: AuthViewModelViewDelegate {
         authView.loginButton.loadingIndicator(isLoading)
     }
     
-    func presentError(title: String, message: String) {
+    func presentError(title: String, message: String?) {
         displayAlert(message: message, title: title)
     }
 }

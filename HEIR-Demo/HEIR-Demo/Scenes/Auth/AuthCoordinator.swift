@@ -13,16 +13,18 @@ final class AuthCoordinator: RootCoordinator, Coordinator {
     
     private let navigationController: UINavigationController
     private let authService: AuthService
+    private let userService: UserService
     
     lazy var authViewModel: AuthViewModel? = {
-        let viewModel = AuthViewModel(authService: authService)
+        let viewModel = AuthViewModel(authService: authService, userService: userService)
         viewModel.coordinatorDelegate = self
         return viewModel
     }()
     
-    init(navigationController: UINavigationController, authService: AuthService) {
+    init(navigationController: UINavigationController, authService: AuthService, userService: UserService) {
         self.navigationController = navigationController
         self.authService = authService
+        self.userService = userService
     }
     
     func start() {
