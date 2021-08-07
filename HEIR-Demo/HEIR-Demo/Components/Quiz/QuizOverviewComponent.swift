@@ -108,9 +108,10 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
         quiz = viewModel.quiz
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
-        quizNameLabel.text = quiz?.quizName
-        rewardLabel.text = quiz?.reward.title
-        rewardImage.image = quiz?.reward.image
+        quizNameLabel.text = viewModel.quiz.quizName
+        rewardLabel.text = viewModel.quiz.reward.title
+        rewardImage.image = viewModel.quiz.reward.image
+        
     }
     
     func prepareForReuse() {
@@ -146,7 +147,7 @@ private extension QuizOverviewComponent {
             
             titleContentStack.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             titleContentStack.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: Spacing.sixteen),
-            titleContentStack.trailingAnchor.constraint(equalTo: rewardImage.leadingAnchor, constant: -Spacing.four),
+            titleContentStack.trailingAnchor.constraint(equalTo: rewardImage.leadingAnchor, constant: Spacing.four),
             
             rewardImage.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             rewardImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.sixteen),

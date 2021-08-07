@@ -31,6 +31,7 @@ final class CreateQuizViewController: UIViewController {
     
     func setupActions() {
         createQuizView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        createQuizView.rewardCarousel.delegate = self
     }
 }
 
@@ -60,4 +61,12 @@ extension CreateQuizViewController {
         viewModel?.backTapped(with: controller)
     }
     
+}
+
+// MARK: - RewardCarouselDelegate
+
+extension CreateQuizViewController: RewardCarouselDelegate {
+    func rewardSelected(_ reward: Reward) {
+        viewModel?.rewardSelected(reward: reward)
+    }
 }

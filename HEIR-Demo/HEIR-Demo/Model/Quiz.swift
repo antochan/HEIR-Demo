@@ -7,9 +7,9 @@
 
 import UIKit
 
-enum Reward: String, Codable {
+enum Reward: String, Codable, CaseIterable {
     case universityBlues
-    case pumaCycleHardwood
+    case seafoam
     case travisScott
     case offwhite
     
@@ -17,8 +17,8 @@ enum Reward: String, Codable {
         switch self {
         case .universityBlues:
             return "AJ 1 University Blues"
-        case .pumaCycleHardwood:
-            return "Puma Cycle Hardwood"
+        case .seafoam:
+            return "AJ 1 Retro High 'Seafoam'"
         case .travisScott:
             return "AJ 1 Travis Scott"
         case .offwhite:
@@ -30,8 +30,8 @@ enum Reward: String, Codable {
         switch self {
         case .universityBlues:
             return #imageLiteral(resourceName: "UniversityBlue")
-        case .pumaCycleHardwood:
-            return #imageLiteral(resourceName: "Puma")
+        case .seafoam:
+            return #imageLiteral(resourceName: "seafoam")
         case .travisScott:
             return #imageLiteral(resourceName: "travisScott")
         case .offwhite:

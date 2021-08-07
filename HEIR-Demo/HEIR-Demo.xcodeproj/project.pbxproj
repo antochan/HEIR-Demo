@@ -52,6 +52,8 @@
 		8A94AF9D26BE8F790012BD79 /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9926BE8F780012BD79 /* CreateQuizViewController.swift */; };
 		8A94AF9E26BE8F790012BD79 /* CreateQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9A26BE8F780012BD79 /* CreateQuizViewModel.swift */; };
 		8A94AF9F26BE8F790012BD79 /* CreateQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9B26BE8F790012BD79 /* CreateQuizView.swift */; };
+		8A94AFA126BEF98D0012BD79 /* RewardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFA026BEF98D0012BD79 /* RewardComponent.swift */; };
+		8A94AFA326BF058B0012BD79 /* RewardCarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFA226BF058B0012BD79 /* RewardCarouselComponent.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +132,8 @@
 		8A94AF9926BE8F780012BD79 /* CreateQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
 		8A94AF9A26BE8F780012BD79 /* CreateQuizViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizViewModel.swift; sourceTree = "<group>"; };
 		8A94AF9B26BE8F790012BD79 /* CreateQuizView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizView.swift; sourceTree = "<group>"; };
+		8A94AFA026BEF98D0012BD79 /* RewardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardComponent.swift; sourceTree = "<group>"; };
+		8A94AFA226BF058B0012BD79 /* RewardCarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCarouselComponent.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -378,6 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				8A94AF9526BE69E90012BD79 /* QuizOverviewComponent.swift */,
+				8A94AFA026BEF98D0012BD79 /* RewardComponent.swift */,
+				8A94AFA226BF058B0012BD79 /* RewardCarouselComponent.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -648,6 +654,7 @@
 				8A94AF9D26BE8F790012BD79 /* CreateQuizViewController.swift in Sources */,
 				8A94AF6726BD0C350012BD79 /* Components.swift in Sources */,
 				8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */,
+				8A94AFA126BEF98D0012BD79 /* RewardComponent.swift in Sources */,
 				8A94AF4C26BCFCDC0012BD79 /* AuthViewModel.swift in Sources */,
 				8A94AF9E26BE8F790012BD79 /* CreateQuizViewModel.swift in Sources */,
 				8A94AF7626BD208A0012BD79 /* User.swift in Sources */,
@@ -660,6 +667,7 @@
 				8A94AF8C26BE590C0012BD79 /* AthleteHomeView.swift in Sources */,
 				8A94AF4726BCFC210012BD79 /* AppCoordinator.swift in Sources */,
 				8A94AF7A26BD21F40012BD79 /* DatabaseReference+toLocation.swift in Sources */,
+				8A94AFA326BF058B0012BD79 /* RewardCarouselComponent.swift in Sources */,
 				8A94AF4226BCFBE60012BD79 /* RootCoordinator.swift in Sources */,
 				8A94AF7326BD1FEB0012BD79 /* UserService.swift in Sources */,
 				8A94AF6626BD0C350012BD79 /* PressScalable.swift in Sources */,

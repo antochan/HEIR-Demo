@@ -14,9 +14,11 @@ protocol CreateQuizViewModelType {
     // Data Source
     var quizService: QuizService { get }
     var user: User { get }
+    var selectedReward: Reward? { get }
     
     /// Events
     func viewDidLoad()
+    func rewardSelected(reward: Reward)
     func backTapped(with controller: UINavigationController)
 }
 
@@ -38,6 +40,7 @@ final class CreateQuizViewModel {
     // MARK: - Properties
     var quizService: QuizService
     var user: User
+    var selectedReward: Reward?
     
     init(quizService: QuizService, user: User) {
         self.quizService = quizService
@@ -50,6 +53,10 @@ extension CreateQuizViewModel: CreateQuizViewModelType {
     
     func viewDidLoad() {
         viewDelegate?.updateScreen()
+    }
+    
+    func rewardSelected(reward: Reward) {
+        selectedReward = reward
     }
     
     func backTapped(with controller: UINavigationController) {
