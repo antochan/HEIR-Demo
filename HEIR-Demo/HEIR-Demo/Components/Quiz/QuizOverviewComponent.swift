@@ -73,6 +73,7 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
     private let launchButton: ButtonComponent = {
         let button = ButtonComponent()
         button.isUserInteractionEnabled = false
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         return button
     }()
     
@@ -150,7 +151,7 @@ private extension QuizOverviewComponent {
             rewardImage.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.8),
             rewardImage.widthAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.8),
             
-            launchButton.widthAnchor.constraint(equalTo: titleContentStack.widthAnchor, multiplier: 0.65),
+            launchButton.widthAnchor.constraint(equalTo: titleContentStack.widthAnchor, multiplier: 0.7),
             launchButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
@@ -191,6 +192,7 @@ private extension QuizOverviewComponent {
             launchButton.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Closed"))
             launchButton.isEnabled = false
         }
+        // We are waiting for launch
         else {
             launchTimeLabel.isHidden = false
             launchButton.isHidden = true
