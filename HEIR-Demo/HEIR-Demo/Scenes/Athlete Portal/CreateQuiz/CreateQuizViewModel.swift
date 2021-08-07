@@ -21,10 +21,12 @@ protocol CreateQuizViewModelType {
     func viewDidLoad()
     func rewardSelected(reward: Reward)
     func backTapped(with controller: UINavigationController)
+    func addQuestion(with controller: UINavigationController)
 }
 
 protocol CreateQuizViewModelCoordinatorDelegate: AnyObject {
     func dismiss(with controller: UINavigationController)
+    func addQuestion(with coordinator: CreateQuestionCoordinator)
 }
 
 protocol CreateQuizViewModelViewDelegate {
@@ -65,4 +67,16 @@ extension CreateQuizViewModel: CreateQuizViewModelType {
         coordinatorDelegate?.dismiss(with: controller)
     }
     
+    func addQuestion(with controller: UINavigationController) {
+        let coordinator = CreateQuestionCoordinator(navigationController: controller)
+        coordinator.delegate = self
+        coordinatorDelegate?.addQuestion(with: coordinator)
+    }
+    
+}
+
+extension CreateQuizViewModel: CreateQuestionDelegate {
+    func created(question: Question) {
+        questions.append(question)
+    }
 }

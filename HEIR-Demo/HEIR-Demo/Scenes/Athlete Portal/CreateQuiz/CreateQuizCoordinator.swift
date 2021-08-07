@@ -51,7 +51,12 @@ final class CreateQuizCoordinator: RootCoordinator, Coordinator {
 // MARK: - CreateQuizViewModelCoordinatorDelegate
 
 extension CreateQuizCoordinator: CreateQuizViewModelCoordinatorDelegate {
+    
     func dismiss(with controller: UINavigationController) {
         controller.popViewController(animated: true)
+    }
+    
+    func addQuestion(with coordinator: CreateQuestionCoordinator) {
+        coordinator.start()
     }
 }

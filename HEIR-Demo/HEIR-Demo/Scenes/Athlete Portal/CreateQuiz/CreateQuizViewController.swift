@@ -33,6 +33,11 @@ final class CreateQuizViewController: UIViewController {
     func setupActions() {
         createQuizView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         createQuizView.rewardCarousel.delegate = self
+        
+        createQuizView.addQuestionButton.addTarget(self, action: #selector(addQuestionTapped), for: .touchUpInside)
+        createQuizView.noQuestionsComponent.actions = { [weak self] _ in
+            self?.addQuestionTapped()
+        }
     }
 }
 
@@ -64,6 +69,10 @@ extension CreateQuizViewController {
         viewModel?.backTapped(with: controller)
     }
     
+    @objc func addQuestionTapped() {
+        guard let controller = navigationController else { return }
+        viewModel?.addQuestion(with: controller)
+    }
 }
 
 // MARK: - RewardCarouselDelegate
