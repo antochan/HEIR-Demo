@@ -23,12 +23,6 @@ final class AthleteHomeViewController: UIViewController {
         super.loadView()
         view = athleteHomeView
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +32,7 @@ final class AthleteHomeViewController: UIViewController {
     }
     
     func setupActions() {
-        
+        athleteHomeView.createQuizButton.addTarget(self, action: #selector(createQuizTapped), for: .touchUpInside)
     }
 }
 
@@ -72,5 +66,8 @@ extension AthleteHomeViewController: AthleteHomeViewModelViewDelegate {
 
 extension AthleteHomeViewController {
     
-    
+    @objc func createQuizTapped() {
+        guard let controller = navigationController else { return }
+        viewModel?.createQuiz(with: controller)
+    }
 }

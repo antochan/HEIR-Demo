@@ -60,7 +60,7 @@ final class AthleteHomeView: UIView {
         return label
     }()
     
-    private let createQuizButton: UIButton = {
+    let createQuizButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Color.Primary.Black
         button.tintColor = Color.Primary.White
@@ -102,7 +102,7 @@ private extension AthleteHomeView {
             headerTextStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.sixteen),
             headerTextStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.twentyFour),
             headerTextStack.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
-            headerTextStack.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: Spacing.thirtyTwo),
+            headerTextStack.trailingAnchor.constraint(equalTo: profileImageView.leadingAnchor, constant: -Spacing.twentyFour),
             
             profileImageView.centerYAnchor.constraint(equalTo: headerTextStack.centerYAnchor),
             profileImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.twentyFour),

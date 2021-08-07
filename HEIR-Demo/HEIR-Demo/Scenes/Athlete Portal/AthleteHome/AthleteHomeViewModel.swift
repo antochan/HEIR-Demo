@@ -12,13 +12,16 @@ protocol AthleteHomeViewModelType {
     var coordinatorDelegate: AthleteHomeViewModelCoordinatorDelegate? { get set }
     
     // Data Source
+    var quizService: QuizService { get }
     var user: User { get }
     
     /// Events
     func viewDidLoad()
+    func createQuiz(with controller: UINavigationController)
 }
 
 protocol AthleteHomeViewModelCoordinatorDelegate: AnyObject {
+    func createQuiz(with controller: UINavigationController, user: User)
 }
 
 protocol AthleteHomeViewModelViewDelegate {
@@ -33,9 +36,11 @@ final class AthleteHomeViewModel {
     var viewDelegate: AthleteHomeViewModelViewDelegate?
     
     // MARK: - Properties
+    var quizService: QuizService
     var user: User
     
-    init(user: User) {
+    init(quizService: QuizService, user: User) {
+        self.quizService = quizService
         self.user = user
     }
     
@@ -45,6 +50,10 @@ extension AthleteHomeViewModel: AthleteHomeViewModelType {
     
     func viewDidLoad() {
         viewDelegate?.updateScreen()
+    }
+    
+    func createQuiz(with controller: UINavigationController) {
+        coordinatorDelegate?.createQuiz(with: controller, user: user)
     }
     
 }

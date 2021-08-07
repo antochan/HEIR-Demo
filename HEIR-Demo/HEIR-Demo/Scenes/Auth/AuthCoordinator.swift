@@ -53,7 +53,9 @@ final class AuthCoordinator: RootCoordinator, Coordinator {
 extension AuthCoordinator: AuthViewModelCoordinatorDelegate {
     func routeToAthletePortal(with controller: UINavigationController, user: User) {
         removeAllChildCoordinatorsWith(type: AuthCoordinator.self)
-        let athleteHomeCoordinator = AthleteHomeCoordinator(navigationController: controller, user: user)
+        let athleteHomeCoordinator = AthleteHomeCoordinator(navigationController: controller,
+                                                            quizService: QuizService(),
+                                                            user: user)
         athleteHomeCoordinator.start()
     }
 }

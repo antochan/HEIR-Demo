@@ -48,6 +48,10 @@
 		8A94AF9126BE64100012BD79 /* QuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9026BE64100012BD79 /* QuizService.swift */; };
 		8A94AF9326BE64D40012BD79 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9226BE64D40012BD79 /* Quiz.swift */; };
 		8A94AF9626BE69E90012BD79 /* QuizOverviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9526BE69E90012BD79 /* QuizOverviewComponent.swift */; };
+		8A94AF9C26BE8F790012BD79 /* CreateQuizCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9826BE8F780012BD79 /* CreateQuizCoordinator.swift */; };
+		8A94AF9D26BE8F790012BD79 /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9926BE8F780012BD79 /* CreateQuizViewController.swift */; };
+		8A94AF9E26BE8F790012BD79 /* CreateQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9A26BE8F780012BD79 /* CreateQuizViewModel.swift */; };
+		8A94AF9F26BE8F790012BD79 /* CreateQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF9B26BE8F790012BD79 /* CreateQuizView.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +126,10 @@
 		8A94AF9026BE64100012BD79 /* QuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizService.swift; sourceTree = "<group>"; };
 		8A94AF9226BE64D40012BD79 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		8A94AF9526BE69E90012BD79 /* QuizOverviewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOverviewComponent.swift; sourceTree = "<group>"; };
+		8A94AF9826BE8F780012BD79 /* CreateQuizCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizCoordinator.swift; sourceTree = "<group>"; };
+		8A94AF9926BE8F780012BD79 /* CreateQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
+		8A94AF9A26BE8F780012BD79 /* CreateQuizViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizViewModel.swift; sourceTree = "<group>"; };
+		8A94AF9B26BE8F790012BD79 /* CreateQuizView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizView.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -334,7 +342,8 @@
 		8A94AF8326BE58910012BD79 /* Athlete Portal */ = {
 			isa = PBXGroup;
 			children = (
-				8A94AF8626BE58C90012BD79 /* Athlete Home */,
+				8A94AF8626BE58C90012BD79 /* AthleteHome */,
+				8A94AF9726BE8EBF0012BD79 /* CreateQuiz */,
 			);
 			path = "Athlete Portal";
 			sourceTree = "<group>";
@@ -342,27 +351,27 @@
 		8A94AF8426BE589E0012BD79 /* Fan Portal */ = {
 			isa = PBXGroup;
 			children = (
-				8A94AF8726BE58D40012BD79 /* Fan Home */,
+				8A94AF8726BE58D40012BD79 /* FanHome */,
 			);
 			path = "Fan Portal";
 			sourceTree = "<group>";
 		};
-		8A94AF8626BE58C90012BD79 /* Athlete Home */ = {
+		8A94AF8626BE58C90012BD79 /* AthleteHome */ = {
 			isa = PBXGroup;
 			children = (
 				8A94AF8926BE590C0012BD79 /* AthleteHomeCoordinator.swift */,
-				8A94AF8826BE590C0012BD79 /* AthleteHomeView.swift */,
 				8A94AF8B26BE590C0012BD79 /* AthleteHomeViewController.swift */,
 				8A94AF8A26BE590C0012BD79 /* AthleteHomeViewModel.swift */,
+				8A94AF8826BE590C0012BD79 /* AthleteHomeView.swift */,
 			);
-			path = "Athlete Home";
+			path = AthleteHome;
 			sourceTree = "<group>";
 		};
-		8A94AF8726BE58D40012BD79 /* Fan Home */ = {
+		8A94AF8726BE58D40012BD79 /* FanHome */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Fan Home";
+			path = FanHome;
 			sourceTree = "<group>";
 		};
 		8A94AF9426BE69C60012BD79 /* Quiz */ = {
@@ -371,6 +380,17 @@
 				8A94AF9526BE69E90012BD79 /* QuizOverviewComponent.swift */,
 			);
 			path = Quiz;
+			sourceTree = "<group>";
+		};
+		8A94AF9726BE8EBF0012BD79 /* CreateQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF9826BE8F780012BD79 /* CreateQuizCoordinator.swift */,
+				8A94AF9926BE8F780012BD79 /* CreateQuizViewController.swift */,
+				8A94AF9A26BE8F780012BD79 /* CreateQuizViewModel.swift */,
+				8A94AF9B26BE8F790012BD79 /* CreateQuizView.swift */,
+			);
+			path = CreateQuiz;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -618,16 +638,20 @@
 				8A94AF4426BCFBEE0012BD79 /* Coordinator.swift in Sources */,
 				8A94AF9626BE69E90012BD79 /* QuizOverviewComponent.swift in Sources */,
 				8A94AF7826BD21520012BD79 /* AccountType.swift in Sources */,
+				8A94AF9F26BE8F790012BD79 /* CreateQuizView.swift in Sources */,
 				8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */,
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
 				8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */,
 				8A94AF8D26BE590C0012BD79 /* AthleteHomeCoordinator.swift in Sources */,
 				8A94AF4A26BCFCD30012BD79 /* AuthView.swift in Sources */,
 				8A94AF8F26BE590C0012BD79 /* AthleteHomeViewController.swift in Sources */,
+				8A94AF9D26BE8F790012BD79 /* CreateQuizViewController.swift in Sources */,
 				8A94AF6726BD0C350012BD79 /* Components.swift in Sources */,
 				8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */,
 				8A94AF4C26BCFCDC0012BD79 /* AuthViewModel.swift in Sources */,
+				8A94AF9E26BE8F790012BD79 /* CreateQuizViewModel.swift in Sources */,
 				8A94AF7626BD208A0012BD79 /* User.swift in Sources */,
+				8A94AF9C26BE8F790012BD79 /* CreateQuizCoordinator.swift in Sources */,
 				8A94AF9326BE64D40012BD79 /* Quiz.swift in Sources */,
 				8A94AF4E26BCFCE80012BD79 /* AuthViewController.swift in Sources */,
 				8A94AF6826BD0C350012BD79 /* PressHighlightable.swift in Sources */,
