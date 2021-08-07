@@ -15,6 +15,7 @@ protocol CreateQuizViewModelType {
     var quizService: QuizService { get }
     var user: User { get }
     var selectedReward: Reward? { get }
+    var questions: [Question] { get }
     
     /// Events
     func viewDidLoad()
@@ -41,6 +42,7 @@ final class CreateQuizViewModel {
     var quizService: QuizService
     var user: User
     var selectedReward: Reward?
+    var questions: [Question] = []
     
     init(quizService: QuizService, user: User) {
         self.quizService = quizService

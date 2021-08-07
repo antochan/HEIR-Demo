@@ -27,6 +27,7 @@ final class CreateQuizViewController: UIViewController {
         super.viewDidLoad()
         setupActions()
         
+        viewModel?.viewDidLoad()
     }
     
     func setupActions() {
@@ -40,7 +41,9 @@ final class CreateQuizViewController: UIViewController {
 extension CreateQuizViewController: CreateQuizViewModelViewDelegate {
     
     func updateScreen() {
-        
+        guard let viewModel = viewModel else { return }
+        createQuizView.addQuestionButton.isHidden = viewModel.questions.isEmpty
+        createQuizView.noQuestionsComponent.isHidden = !viewModel.questions.isEmpty
     }
     
     func loading(_ isLoading: Bool) {

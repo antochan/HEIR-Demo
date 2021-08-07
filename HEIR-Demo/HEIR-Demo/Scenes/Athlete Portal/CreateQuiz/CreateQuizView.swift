@@ -33,7 +33,6 @@ final class CreateQuizView: UIView {
     
     private let quizDetailsStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = Spacing.eight
         return stackView
@@ -41,7 +40,6 @@ final class CreateQuizView: UIView {
     
     private let headerTextStack: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = Spacing.four
         return stackView
@@ -106,6 +104,43 @@ final class CreateQuizView: UIView {
         let component = RewardCarouselComponent()
         return component
     }()
+    
+    private let questionsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.sixteen
+        return stackView
+    }()
+    
+    private let questionsTitleStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = Spacing.eight
+        return stackView
+    }()
+    
+    private let questionsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.SFProTextSemibold(size: 15)
+        label.text = "Questions"
+        return label
+    }()
+    
+    let addQuestionButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = Color.Primary.Black
+        button.tintColor = Color.Primary.White
+        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    let noQuestionsComponent: NoQuestionsComponent = {
+        let component = NoQuestionsComponent()
+        return component
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -131,7 +166,7 @@ private extension CreateQuizView {
         addSubviews(backButton, scrollView)
         scrollView.addSubview(contentStackView)
         
-        contentStackView.addArrangedSubviews(quizDetailsStackView, rewardCarousel)
+        contentStackView.addArrangedSubviews(quizDetailsStackView, rewardCarousel, questionsStackView)
         quizDetailsStackView.addArrangedSubviews(headerTextStack, quizNameLabel, quizNameTextField, launchDateLabel, launchDateTextField, rewardTitleLabel)
         
         contentStackView.setCustomSpacing(Spacing.sixteen, after: quizDetailsStackView)
@@ -139,6 +174,11 @@ private extension CreateQuizView {
         quizDetailsStackView.setCustomSpacing(Spacing.thirtyTwo, after: headerTextStack)
         quizDetailsStackView.setCustomSpacing(Spacing.sixteen, after: quizNameTextField)
         quizDetailsStackView.setCustomSpacing(Spacing.thirtyTwo, after: launchDateTextField)
+        
+        contentStackView.setCustomSpacing(Spacing.twentyFour, after: rewardCarousel)
+        
+        questionsStackView.addArrangedSubviews(questionsTitleStack, noQuestionsComponent)
+        questionsTitleStack.addArrangedSubviews(questionsTitleLabel, addQuestionButton)
         
         headerTextStack.addArrangedSubviews(createQuizTitleLabel, createQuizSubtitleLabel)
     }
@@ -158,14 +198,21 @@ private extension CreateQuizView {
             contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Spacing.thirtyTwo),
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             quizDetailsStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: Spacing.fortyEight),
             quizDetailsStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -Spacing.fortyEight),
             quizDetailsStackView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor, constant: -Spacing.fortyEight * 2),
             
-            rewardCarousel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Spacing.thirtyTwo)
+            rewardCarousel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Spacing.thirtyTwo),
+            
+            questionsStackView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: Spacing.fortyEight),
+            questionsStackView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -Spacing.fortyEight),
+            questionsStackView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor, constant: -Spacing.fortyEight * 2),
+            
+            addQuestionButton.heightAnchor.constraint(equalToConstant: 20),
+            addQuestionButton.widthAnchor.constraint(equalToConstant: 20)
         ])
     }
     
