@@ -48,8 +48,12 @@ final class AuthCoordinator: RootCoordinator, Coordinator {
     }
 }
 
-// MARK: - SplashViewModelCoordinatorDelegate
+// MARK: - AuthViewModelCoordinatorDelegate
 
 extension AuthCoordinator: AuthViewModelCoordinatorDelegate {
-
+    func routeToAthletePortal(with controller: UINavigationController, user: User) {
+        removeAllChildCoordinatorsWith(type: AuthCoordinator.self)
+        let athleteHomeCoordinator = AthleteHomeCoordinator(navigationController: controller, user: user)
+        athleteHomeCoordinator.start()
+    }
 }

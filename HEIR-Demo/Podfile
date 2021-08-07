@@ -6,6 +6,10 @@ target 'HEIR-Demo' do
   use_frameworks!
 
   # Pods for HEIR-Demo
+  pod 'Kingfisher'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SSNeumorphicView'
+  
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'

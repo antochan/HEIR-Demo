@@ -17,10 +17,11 @@ protocol AuthViewModelType {
     
     /// Events
     func login(with controller: UINavigationController, email: String?, password: String?)
-    func getUser(uid: String)
+    func getUser(controller: UINavigationController, uid: String)
 }
 
 protocol AuthViewModelCoordinatorDelegate: AnyObject {
+    func routeToAthletePortal(with controller: UINavigationController, user: User)
 }
 
 protocol AuthViewModelViewDelegate {
@@ -62,7 +63,8 @@ extension AuthViewModel: AuthViewModelType {
                     self?.viewDelegate?.loading(false)
                     return
                 }
-                self?.getUser(uid: uid)
+                self?.getUser(controller: controller,
+                              uid: uid)
             case .failure(let error):
                 self?.viewDelegate?.presentError(title: "Oops, Something went wrong",
                                                  message: error.errorDescription)
@@ -71,11 +73,17 @@ extension AuthViewModel: AuthViewModelType {
         }
     }
     
-    func getUser(uid: String) {
+    func getUser(controller: UINavigationController, uid: String) {
         userService.getUser(uid: uid) { [weak self] result in
             switch result {
             case .success(let user):
-                print(user?.accountType)
+                switch user.accountType {
+                case .athlete:
+                    self?.coordinatorDelegate?.routeToAthletePortal(with: controller,
+                                                                    user: user)
+                case .fan:
+                    print("fan portal 🚀")
+                }
             case .failure(let error):
                 self?.viewDelegate?.presentError(title: "Oops, Something went wrong",
                                                  message: error.errorDescription)

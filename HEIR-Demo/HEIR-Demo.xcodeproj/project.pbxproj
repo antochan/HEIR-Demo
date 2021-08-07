@@ -41,6 +41,10 @@
 		8A94AF7826BD21520012BD79 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF7726BD21520012BD79 /* AccountType.swift */; };
 		8A94AF7A26BD21F40012BD79 /* DatabaseReference+toLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF7926BD21F40012BD79 /* DatabaseReference+toLocation.swift */; };
 		8A94AF7C26BD87470012BD79 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF7B26BD87470012BD79 /* AppError.swift */; };
+		8A94AF8C26BE590C0012BD79 /* AthleteHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF8826BE590C0012BD79 /* AthleteHomeView.swift */; };
+		8A94AF8D26BE590C0012BD79 /* AthleteHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF8926BE590C0012BD79 /* AthleteHomeCoordinator.swift */; };
+		8A94AF8E26BE590C0012BD79 /* AthleteHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF8A26BE590C0012BD79 /* AthleteHomeViewModel.swift */; };
+		8A94AF8F26BE590C0012BD79 /* AthleteHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AF8B26BE590C0012BD79 /* AthleteHomeViewController.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +112,10 @@
 		8A94AF7726BD21520012BD79 /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 		8A94AF7926BD21F40012BD79 /* DatabaseReference+toLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseReference+toLocation.swift"; sourceTree = "<group>"; };
 		8A94AF7B26BD87470012BD79 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		8A94AF8826BE590C0012BD79 /* AthleteHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleteHomeView.swift; sourceTree = "<group>"; };
+		8A94AF8926BE590C0012BD79 /* AthleteHomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleteHomeCoordinator.swift; sourceTree = "<group>"; };
+		8A94AF8A26BE590C0012BD79 /* AthleteHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleteHomeViewModel.swift; sourceTree = "<group>"; };
+		8A94AF8B26BE590C0012BD79 /* AthleteHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleteHomeViewController.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -234,6 +242,8 @@
 				8A94AF1B26BCFA4F0012BD79 /* LaunchScreen.storyboard */,
 				8A94AF4626BCFC210012BD79 /* AppCoordinator.swift */,
 				8A94AF4826BCFCBC0012BD79 /* Auth */,
+				8A94AF8326BE58910012BD79 /* Athlete Portal */,
+				8A94AF8426BE589E0012BD79 /* Fan Portal */,
 				8A94AF5126BD08410012BD79 /* Utilities */,
 			);
 			path = Scenes;
@@ -310,6 +320,40 @@
 				8A94AF7B26BD87470012BD79 /* AppError.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8A94AF8326BE58910012BD79 /* Athlete Portal */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF8626BE58C90012BD79 /* Athlete Home */,
+			);
+			path = "Athlete Portal";
+			sourceTree = "<group>";
+		};
+		8A94AF8426BE589E0012BD79 /* Fan Portal */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF8726BE58D40012BD79 /* Fan Home */,
+			);
+			path = "Fan Portal";
+			sourceTree = "<group>";
+		};
+		8A94AF8626BE58C90012BD79 /* Athlete Home */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF8926BE590C0012BD79 /* AthleteHomeCoordinator.swift */,
+				8A94AF8826BE590C0012BD79 /* AthleteHomeView.swift */,
+				8A94AF8B26BE590C0012BD79 /* AthleteHomeViewController.swift */,
+				8A94AF8A26BE590C0012BD79 /* AthleteHomeViewModel.swift */,
+			);
+			path = "Athlete Home";
+			sourceTree = "<group>";
+		};
+		8A94AF8726BE58D40012BD79 /* Fan Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Fan Home";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -559,7 +603,9 @@
 				8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */,
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
 				8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */,
+				8A94AF8D26BE590C0012BD79 /* AthleteHomeCoordinator.swift in Sources */,
 				8A94AF4A26BCFCD30012BD79 /* AuthView.swift in Sources */,
+				8A94AF8F26BE590C0012BD79 /* AthleteHomeViewController.swift in Sources */,
 				8A94AF6726BD0C350012BD79 /* Components.swift in Sources */,
 				8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */,
 				8A94AF4C26BCFCDC0012BD79 /* AuthViewModel.swift in Sources */,
@@ -568,6 +614,7 @@
 				8A94AF6826BD0C350012BD79 /* PressHighlightable.swift in Sources */,
 				8A94AF5326BD084A0012BD79 /* Extensions.swift in Sources */,
 				8A94AF7C26BD87470012BD79 /* AppError.swift in Sources */,
+				8A94AF8C26BE590C0012BD79 /* AthleteHomeView.swift in Sources */,
 				8A94AF4726BCFC210012BD79 /* AppCoordinator.swift in Sources */,
 				8A94AF7A26BD21F40012BD79 /* DatabaseReference+toLocation.swift in Sources */,
 				8A94AF4226BCFBE60012BD79 /* RootCoordinator.swift in Sources */,
@@ -576,6 +623,7 @@
 				8A94AF5D26BD09C90012BD79 /* Fonts.swift in Sources */,
 				8A94AF5026BCFCF00012BD79 /* AuthCoordinator.swift in Sources */,
 				8A94AF1326BCFA4D0012BD79 /* SceneDelegate.swift in Sources */,
+				8A94AF8E26BE590C0012BD79 /* AthleteHomeViewModel.swift in Sources */,
 				8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

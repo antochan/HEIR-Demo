@@ -9,7 +9,7 @@ import Firebase
 import CodableFirebase
 
 final class UserService {
-    typealias getUserCompletion = (_ result: Result<User?, AppError>) -> Void
+    typealias getUserCompletion = (_ result: Result<User, AppError>) -> Void
     
     func getUser(uid: String, completion: @escaping getUserCompletion) {
         CollectionReference.toLocation(.users).document(uid).getDocument { (document, error) in

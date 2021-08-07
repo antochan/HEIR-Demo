@@ -88,3 +88,15 @@ public enum BorderWidth: CGFloat {
     case thin = 0.5
     case none = 0.0
 }
+
+struct Color {
+    
+    struct Primary {
+        static let Black = UIColor(rgb: 0x000000)
+        static let White = UIColor(rgb: 0xFFFFFF)
+        static let GrayText = UIColor(rgb: 0x8F92A1)
+        static let BackgroundWhite = UIColor(rgb: 0xF5F5F5)
+        static let LightGray = UIColor(rgb: 0xBDBDBD)
+        static let DarkGray = UIColor(rgb: 0xC4C4C4)
+    }
+}
