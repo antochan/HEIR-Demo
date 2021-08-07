@@ -70,6 +70,12 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
         return imageView
     }()
     
+    private let launchButton: ButtonComponent = {
+        let button = ButtonComponent()
+        button.isUserInteractionEnabled = false
+        return button
+    }()
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         set(isPressed: true, animated: true)
@@ -123,7 +129,7 @@ private extension QuizOverviewComponent {
     func configureSubviews() {
         addSubview(cardView)
         cardView.addSubviews(rewardImage, titleContentStack)
-        titleContentStack.addArrangedSubviews(quizNameLabel, rewardLabel, launchTimeLabel)
+        titleContentStack.addArrangedSubviews(quizNameLabel, rewardLabel, launchTimeLabel, launchButton)
         
         titleContentStack.setCustomSpacing(Spacing.sixteen, after: rewardLabel)
     }
@@ -142,7 +148,10 @@ private extension QuizOverviewComponent {
             rewardImage.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             rewardImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.sixteen),
             rewardImage.heightAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.8),
-            rewardImage.widthAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.8)
+            rewardImage.widthAnchor.constraint(equalTo: cardView.heightAnchor, multiplier: 0.8),
+            
+            launchButton.widthAnchor.constraint(equalTo: titleContentStack.widthAnchor, multiplier: 0.65),
+            launchButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
     
@@ -168,7 +177,25 @@ private extension QuizOverviewComponent {
     
     @objc func updateTimeLabel() {
         guard let quiz = quiz else { return }
-        launchTimeLabel.text = countDownToLaunchText(launchTime: quiz.launchTime)
+        
+        // If we are in between the launch and end
+        if Date().timeIntervalSince1970 >= quiz.launchTime && Date().timeIntervalSince1970 <= quiz.endTime {
+            launchTimeLabel.isHidden = true
+            launchButton.isHidden = false
+            launchButton.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Join"))
+        }
+        // We're past the launch date
+        else if Date().timeIntervalSince1970 > quiz.endTime {
+            launchTimeLabel.isHidden = true
+            launchButton.isHidden = false
+            launchButton.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Closed"))
+            launchButton.isEnabled = false
+        }
+        else {
+            launchTimeLabel.isHidden = false
+            launchButton.isHidden = true
+            launchTimeLabel.text = countDownToLaunchText(launchTime: quiz.launchTime)
+        }
     }
 }
 
