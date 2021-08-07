@@ -81,7 +81,7 @@ final class AuthView: UIView {
 private extension AuthView {
     
     func commonInit() {
-        backgroundColor = Color.Primary.BackgroundWhite
+        backgroundColor = Color.Primary.White
         configureSubviews()
         configureLayout()
     }

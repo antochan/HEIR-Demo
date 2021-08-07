@@ -8,7 +8,7 @@ target 'HEIR-Demo' do
   # Pods for HEIR-Demo
   pod 'Kingfisher'
   pod 'IQKeyboardManagerSwift'
-  pod 'SSNeumorphicView'
+  pod 'SkeletonView'
   
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'

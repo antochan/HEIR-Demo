@@ -11,11 +11,14 @@ import Firebase
 extension CollectionReference {
     enum Location: String {
         case users
+        case quiz
         
         func asDatabaseReference() -> CollectionReference {
             switch self {
             case .users:
                 return Firestore.firestore().collection("users")
+            case .quiz:
+                return Firestore.firestore().collection("quiz")
             }
         }
     }

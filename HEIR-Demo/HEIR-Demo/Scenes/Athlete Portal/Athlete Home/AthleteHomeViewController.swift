@@ -54,6 +54,9 @@ extension AthleteHomeViewController: AthleteHomeViewModelViewDelegate {
                                                      options: [.transition(.fade(0.3)),
                                                                .keepCurrentImageWhileLoading
                                                      ])
+        let quiz = Quiz(id: "123", quizName: "NBA Legends", reward: .offwhite, launchTime: 1628406000, endTime: 1628406600)
+        //1628406600 is 8/8 0:10 and 1628406000 is 8/8 0:00
+        athleteHomeView.quizComponent.apply(viewModel: QuizOverviewComponent.ViewModel(quiz: quiz))
     }
     
     func loading(_ isLoading: Bool) {

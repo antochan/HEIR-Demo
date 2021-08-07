@@ -39,11 +39,10 @@ final class AthleteHomeView: UIView {
         return label
     }()
     
-    let goLiveButton: ButtonComponent = {
-        let button = ButtonComponent()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Go Live"))
-        return button
+    let quizComponent: QuizOverviewComponent = {
+        let component = QuizOverviewComponent()
+        component.translatesAutoresizingMaskIntoConstraints = false
+        return component
     }()
 
     override init(frame: CGRect) {
@@ -61,13 +60,13 @@ final class AthleteHomeView: UIView {
 private extension AthleteHomeView {
     
     func commonInit() {
-        backgroundColor = Color.Primary.BackgroundWhite
+        backgroundColor = Color.Primary.White
         configureSubviews()
         configureLayout()
     }
     
     func configureSubviews() {
-        addSubviews(profileImageView, headerTextStack)
+        addSubviews(profileImageView, headerTextStack, quizComponent)
         headerTextStack.addArrangedSubviews(welcomeLabel, athleteNameLabel)
     }
     
@@ -81,7 +80,12 @@ private extension AthleteHomeView {
             profileImageView.centerYAnchor.constraint(equalTo: headerTextStack.centerYAnchor),
             profileImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.twentyFour),
             profileImageView.heightAnchor.constraint(equalToConstant: 40),
-            profileImageView.widthAnchor.constraint(equalToConstant: 40)
+            profileImageView.widthAnchor.constraint(equalToConstant: 40),
+            
+            quizComponent.centerYAnchor.constraint(equalTo: centerYAnchor),
+            quizComponent.centerXAnchor.constraint(equalTo: centerXAnchor),
+            quizComponent.widthAnchor.constraint(equalToConstant: 275),
+            quizComponent.heightAnchor.constraint(equalToConstant: 125)
         ])
     }
     

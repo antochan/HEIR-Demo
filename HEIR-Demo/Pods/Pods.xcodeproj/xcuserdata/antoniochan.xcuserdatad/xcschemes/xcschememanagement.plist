@@ -151,7 +151,7 @@
 			<key>orderHint</key>
 			<integer>26</integer>
 		</dict>
-		<key>SSNeumorphicView.xcscheme</key>
+		<key>SkeletonView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
