@@ -12,9 +12,23 @@ protocol CreateQuestionViewModelType {
     var coordinatorDelegate: CreateQuestionViewModelCoordinatorDelegate? { get set }
     
     // Data Source
+    var question: String? { get }
+    var answerOne: String? { get }
+    var answerTwo: String? { get }
+    var answerThree: String? { get }
+    var answerFour: String? { get }
+    var selectedAnswer: MultipleChoice? { get }
+    
+    var isFormComplete: Bool { get }
     
     /// Events
     func viewDidLoad()
+    func set(question: String?)
+    func set(answerOne: String?)
+    func set(answerTwo: String?)
+    func set(answerThree: String?)
+    func set(answerFour: String?)
+    func selectAnswer(multipleChoice: MultipleChoice)
     func close(with controller: UIViewController)
 }
 
@@ -24,7 +38,6 @@ protocol CreateQuestionViewModelCoordinatorDelegate: AnyObject {
 
 protocol CreateQuestionViewModelViewDelegate {
     func updateScreen()
-    func loading(_ isLoading: Bool)
     func presentError(title: String, message: String?)
 }
 
@@ -33,16 +46,60 @@ final class CreateQuestionViewModel {
     var coordinatorDelegate: CreateQuestionViewModelCoordinatorDelegate?
     var viewDelegate: CreateQuestionViewModelViewDelegate?
     
+    var question: String?
+    var answerOne: String?
+    var answerTwo: String?
+    var answerThree: String?
+    var answerFour: String?
+    var selectedAnswer: MultipleChoice?
+    
     // MARK: - Properties
 
-    init() {
-    }
+    init() {}
     
 }
 
 extension CreateQuestionViewModel: CreateQuestionViewModelType {
     
+    var isFormComplete: Bool {
+        guard question != nil,
+              answerOne != nil,
+              answerTwo != nil,
+              answerThree != nil,
+              answerFour != nil,
+              selectedAnswer != nil else {
+            return false
+        }
+        return true
+    }
+    
+    
     func viewDidLoad() {
+        viewDelegate?.updateScreen()
+    }
+    
+    func set(question: String?) {
+        self.question = question
+    }
+    
+    func set(answerOne: String?) {
+        self.answerOne = answerOne
+    }
+    
+    func set(answerTwo: String?) {
+        self.answerTwo = answerTwo
+    }
+    
+    func set(answerThree: String?) {
+        self.answerThree = answerThree
+    }
+    
+    func set(answerFour: String?) {
+        self.answerFour = answerFour
+    }
+    
+    func selectAnswer(multipleChoice: MultipleChoice) {
+        selectedAnswer = multipleChoice
         viewDelegate?.updateScreen()
     }
     

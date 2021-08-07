@@ -60,6 +60,8 @@
 		8A94AFAE26BF19610012BD79 /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFAA26BF19610012BD79 /* CreateQuestionView.swift */; };
 		8A94AFAF26BF19610012BD79 /* CreateQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFAB26BF19610012BD79 /* CreateQuestionViewController.swift */; };
 		8A94AFB026BF19610012BD79 /* CreateQuestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFAC26BF19610012BD79 /* CreateQuestionCoordinator.swift */; };
+		8A94AFB226BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */; };
+		8A94AFB526BF3B0B0012BD79 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +148,8 @@
 		8A94AFAA26BF19610012BD79 /* CreateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		8A94AFAB26BF19610012BD79 /* CreateQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewController.swift; sourceTree = "<group>"; };
 		8A94AFAC26BF19610012BD79 /* CreateQuestionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionCoordinator.swift; sourceTree = "<group>"; };
+		8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionMultipleChoiceComponent.swift; sourceTree = "<group>"; };
+		8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -352,6 +356,7 @@
 				8A94AF9226BE64D40012BD79 /* Quiz.swift */,
 				8A94AFA426BF12340012BD79 /* Question.swift */,
 				8A94AF7B26BD87470012BD79 /* AppError.swift */,
+				8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				8A94AFA026BEF98D0012BD79 /* RewardComponent.swift */,
 				8A94AFA226BF058B0012BD79 /* RewardCarouselComponent.swift */,
 				8A94AFA626BF14D90012BD79 /* NoQuestionsComponent.swift */,
+				8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -669,6 +675,7 @@
 			files = (
 				8A94AF4426BCFBEE0012BD79 /* Coordinator.swift in Sources */,
 				8A94AFA526BF12340012BD79 /* Question.swift in Sources */,
+				8A94AFB526BF3B0B0012BD79 /* MultipleChoice.swift in Sources */,
 				8A94AF9626BE69E90012BD79 /* QuizOverviewComponent.swift in Sources */,
 				8A94AF7826BD21520012BD79 /* AccountType.swift in Sources */,
 				8A94AF9F26BE8F790012BD79 /* CreateQuizView.swift in Sources */,
@@ -676,6 +683,7 @@
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
 				8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */,
 				8A94AF8D26BE590C0012BD79 /* AthleteHomeCoordinator.swift in Sources */,
+				8A94AFB226BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift in Sources */,
 				8A94AF4A26BCFCD30012BD79 /* AuthView.swift in Sources */,
 				8A94AF8F26BE590C0012BD79 /* AthleteHomeViewController.swift in Sources */,
 				8A94AFAE26BF19610012BD79 /* CreateQuestionView.swift in Sources */,
