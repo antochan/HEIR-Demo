@@ -26,6 +26,7 @@ final class CreateQuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTapped(on: createQuestionView)
         setupActions()
         
         viewModel?.viewDidLoad()
@@ -74,6 +75,8 @@ final class CreateQuestionViewController: UIViewController {
                 self?.viewModel?.set(answerFour: answerFour)
             }
         }
+        
+        createQuestionView.createQuestionButton.addTarget(self, action: #selector(createQuestion), for: .touchUpInside)
     }
 }
 
@@ -122,5 +125,9 @@ extension CreateQuestionViewController: UITextViewDelegate {
 extension CreateQuestionViewController {
     @objc func closeTapped() {
         viewModel?.close(with: self)
+    }
+    
+    @objc func createQuestion() {
+        viewModel?.createQuestion(with: self)
     }
 }

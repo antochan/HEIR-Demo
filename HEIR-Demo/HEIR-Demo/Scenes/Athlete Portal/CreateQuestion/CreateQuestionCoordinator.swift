@@ -52,6 +52,11 @@ final class CreateQuestionCoordinator: RootCoordinator, Coordinator {
 // MARK: - CreateQuestionViewModelCoordinatorDelegate
 
 extension CreateQuestionCoordinator: CreateQuestionViewModelCoordinatorDelegate {
+    func createQuestion(with controller: UIViewController, question: Question) {
+        controller.dismiss(animated: true)
+        delegate?.created(question: question)
+    }
+    
     func close(with controller: UIViewController) {
         controller.dismiss(animated: true)
     }

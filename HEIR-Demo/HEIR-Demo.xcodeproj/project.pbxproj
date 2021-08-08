@@ -62,6 +62,8 @@
 		8A94AFB026BF19610012BD79 /* CreateQuestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFAC26BF19610012BD79 /* CreateQuestionCoordinator.swift */; };
 		8A94AFB226BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */; };
 		8A94AFB526BF3B0B0012BD79 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */; };
+		8A94AFB726BF47480012BD79 /* QuesionMultipleChoiceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB626BF47480012BD79 /* QuesionMultipleChoiceComponent.swift */; };
+		8A94AFBA26BF49CD0012BD79 /* QuizQuestionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB926BF49CD0012BD79 /* QuizQuestionComponent.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +152,8 @@
 		8A94AFAC26BF19610012BD79 /* CreateQuestionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionCoordinator.swift; sourceTree = "<group>"; };
 		8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionMultipleChoiceComponent.swift; sourceTree = "<group>"; };
 		8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
+		8A94AFB626BF47480012BD79 /* QuesionMultipleChoiceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuesionMultipleChoiceComponent.swift; sourceTree = "<group>"; };
+		8A94AFB926BF49CD0012BD79 /* QuizQuestionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionComponent.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -400,11 +404,12 @@
 		8A94AF9426BE69C60012BD79 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				8A94AFB826BF474C0012BD79 /* Multiple Choice */,
 				8A94AF9526BE69E90012BD79 /* QuizOverviewComponent.swift */,
 				8A94AFA026BEF98D0012BD79 /* RewardComponent.swift */,
 				8A94AFA226BF058B0012BD79 /* RewardCarouselComponent.swift */,
 				8A94AFA626BF14D90012BD79 /* NoQuestionsComponent.swift */,
-				8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */,
+				8A94AFB926BF49CD0012BD79 /* QuizQuestionComponent.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -429,6 +434,15 @@
 				8A94AFA926BF19610012BD79 /* CreateQuestionViewModel.swift */,
 			);
 			path = CreateQuestion;
+			sourceTree = "<group>";
+		};
+		8A94AFB826BF474C0012BD79 /* Multiple Choice */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AFB126BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift */,
+				8A94AFB626BF47480012BD79 /* QuesionMultipleChoiceComponent.swift */,
+			);
+			path = "Multiple Choice";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,6 +705,7 @@
 				8A94AF6726BD0C350012BD79 /* Components.swift in Sources */,
 				8A94AF6526BD0C350012BD79 /* Pressable.swift in Sources */,
 				8A94AFA726BF14D90012BD79 /* NoQuestionsComponent.swift in Sources */,
+				8A94AFBA26BF49CD0012BD79 /* QuizQuestionComponent.swift in Sources */,
 				8A94AFA126BEF98D0012BD79 /* RewardComponent.swift in Sources */,
 				8A94AF4C26BCFCDC0012BD79 /* AuthViewModel.swift in Sources */,
 				8A94AF9E26BE8F790012BD79 /* CreateQuizViewModel.swift in Sources */,
@@ -716,6 +731,7 @@
 				8A94AF5026BCFCF00012BD79 /* AuthCoordinator.swift in Sources */,
 				8A94AF1326BCFA4D0012BD79 /* SceneDelegate.swift in Sources */,
 				8A94AF8E26BE590C0012BD79 /* AthleteHomeViewModel.swift in Sources */,
+				8A94AFB726BF47480012BD79 /* QuesionMultipleChoiceComponent.swift in Sources */,
 				8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

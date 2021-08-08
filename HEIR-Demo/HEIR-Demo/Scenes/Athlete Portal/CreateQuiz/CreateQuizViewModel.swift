@@ -78,5 +78,6 @@ extension CreateQuizViewModel: CreateQuizViewModelType {
 extension CreateQuizViewModel: CreateQuestionDelegate {
     func created(question: Question) {
         questions.append(question)
+        viewDelegate?.updateScreen()
     }
 }

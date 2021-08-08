@@ -29,10 +29,12 @@ protocol CreateQuestionViewModelType {
     func set(answerThree: String?)
     func set(answerFour: String?)
     func selectAnswer(multipleChoice: MultipleChoice)
+    func createQuestion(with controller: UIViewController)
     func close(with controller: UIViewController)
 }
 
 protocol CreateQuestionViewModelCoordinatorDelegate: AnyObject {
+    func createQuestion(with controller: UIViewController, question: Question)
     func close(with controller: UIViewController)
 }
 
@@ -62,12 +64,12 @@ final class CreateQuestionViewModel {
 extension CreateQuestionViewModel: CreateQuestionViewModelType {
     
     var isFormComplete: Bool {
-        guard question != nil,
-              answerOne != nil,
-              answerTwo != nil,
-              answerThree != nil,
-              answerFour != nil,
-              selectedAnswer != nil else {
+        guard !question.isNilOrEmpty,
+              !answerOne.isNilOrEmpty,
+              !answerTwo.isNilOrEmpty,
+              !answerThree.isNilOrEmpty,
+              !answerFour.isNilOrEmpty,
+              !selectedAnswer.isNilOrEmpty else {
             return false
         }
         return true
@@ -80,22 +82,27 @@ extension CreateQuestionViewModel: CreateQuestionViewModelType {
     
     func set(question: String?) {
         self.question = question
+        viewDelegate?.updateScreen()
     }
     
     func set(answerOne: String?) {
         self.answerOne = answerOne
+        viewDelegate?.updateScreen()
     }
     
     func set(answerTwo: String?) {
         self.answerTwo = answerTwo
+        viewDelegate?.updateScreen()
     }
     
     func set(answerThree: String?) {
         self.answerThree = answerThree
+        viewDelegate?.updateScreen()
     }
     
     func set(answerFour: String?) {
         self.answerFour = answerFour
+        viewDelegate?.updateScreen()
     }
     
     func selectAnswer(multipleChoice: MultipleChoice) {
@@ -103,8 +110,45 @@ extension CreateQuestionViewModel: CreateQuestionViewModelType {
         viewDelegate?.updateScreen()
     }
     
+    func createQuestion(with controller: UIViewController) {
+        guard let question = question,
+              let answerOne = answerOne,
+              let answerTwo = answerTwo,
+              let answerThree = answerThree,
+              let answerFour = answerFour,
+              let selectedAnswer = selectedAnswer else {
+            viewDelegate?.presentError(title: "Coudn't create question", message: "Please make sure you have filled out the entire form")
+            return
+        }
+        let answer: String = {
+            switch selectedAnswer {
+            case .a:
+                return answerOne
+            case .b:
+                return answerTwo
+            case .c:
+                return answerThree
+            case .d:
+                return answerFour
+            }
+        }()
+        
+        let options = [answerOne, answerTwo, answerThree, answerFour]
+        coordinatorDelegate?.createQuestion(with: controller,
+                                            question: generateQuestion(question: question,
+                                                                       answer: answer,
+                                                                       options: options)) 
+    }
+    
     func close(with controller: UIViewController) {
         coordinatorDelegate?.close(with: controller)
     }
     
+}
+
+private func generateQuestion(question: String, answer: String, options: [String]) -> Question {
+    return Question(id: UUID().uuidString,
+                    question: question,
+                    answer: answer,
+                    options: options)
 }

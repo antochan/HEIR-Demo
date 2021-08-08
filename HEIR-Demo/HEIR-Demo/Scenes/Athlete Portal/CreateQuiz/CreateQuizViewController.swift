@@ -25,6 +25,7 @@ final class CreateQuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTapped(on: createQuizView)
         setupActions()
         
         viewModel?.viewDidLoad()
@@ -39,6 +40,15 @@ final class CreateQuizViewController: UIViewController {
             self?.addQuestionTapped()
         }
     }
+    
+    func createMultipleChoiceView(question: Question, totalQuestionCount: Int, questionIndex: Int) -> QuizQuestionComponent {
+        let component = QuizQuestionComponent()
+        component.apply(viewModel: QuizQuestionComponent.ViewModel(isInCreation: true,
+                                                                   question: question,
+                                                                   totalQuestionCount: totalQuestionCount,
+                                                                   currentQuestionIndex: questionIndex))
+        return component
+    }
 }
 
 // MARK: - CreateQuizViewModelViewDelegate
@@ -49,6 +59,13 @@ extension CreateQuizViewController: CreateQuizViewModelViewDelegate {
         guard let viewModel = viewModel else { return }
         createQuizView.addQuestionButton.isHidden = viewModel.questions.isEmpty
         createQuizView.noQuestionsComponent.isHidden = !viewModel.questions.isEmpty
+        
+        createQuizView.questionStack.removeAllArrangedSubviews()
+        for (index, question) in viewModel.questions.enumerated() {
+            createQuizView.questionStack.addArrangedSubviews(createMultipleChoiceView(question: question,
+                                                                                      totalQuestionCount: viewModel.questions.count,
+                                                                                      questionIndex: index + 1))
+        }
     }
     
     func loading(_ isLoading: Bool) {

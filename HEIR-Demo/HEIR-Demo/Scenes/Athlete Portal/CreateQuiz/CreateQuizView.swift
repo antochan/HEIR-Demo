@@ -126,6 +126,13 @@ final class CreateQuizView: UIView {
         return label
     }()
     
+    let questionStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.eight
+        return stackView
+    }()
+    
     let addQuestionButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Color.Primary.Black
@@ -177,7 +184,7 @@ private extension CreateQuizView {
         
         contentStackView.setCustomSpacing(Spacing.twentyFour, after: rewardCarousel)
         
-        questionsStackView.addArrangedSubviews(questionsTitleStack, noQuestionsComponent)
+        questionsStackView.addArrangedSubviews(questionsTitleStack, noQuestionsComponent, questionStack)
         questionsTitleStack.addArrangedSubviews(questionsTitleLabel, addQuestionButton)
         
         headerTextStack.addArrangedSubviews(createQuizTitleLabel, createQuizSubtitleLabel)
