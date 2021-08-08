@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 final class AppCoordinator: RootCoordinator {
     private(set) var childCoordinators: [Coordinator] = []

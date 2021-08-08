@@ -15,6 +15,7 @@ final class AthleteHomeView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     

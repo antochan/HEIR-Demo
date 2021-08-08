@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 protocol AthleteHomeViewModelType {
     var viewDelegate: AthleteHomeViewModelViewDelegate? { get set }
     var coordinatorDelegate: AthleteHomeViewModelCoordinatorDelegate? { get set }
     
     // Data Source
+    var authService: AuthService { get }
     var quizService: QuizService { get }
     var user: User { get }
     var quizzes: [Quiz] { get }
@@ -21,10 +23,12 @@ protocol AthleteHomeViewModelType {
     func fetchQuizzes()
     func createQuiz(with controller: UINavigationController)
     func deleteQuiz(quiz: Quiz)
+    func logOut(with controller: UINavigationController)
 }
 
 protocol AthleteHomeViewModelCoordinatorDelegate: AnyObject {
     func createQuiz(with controller: UINavigationController, user: User)
+    func logOut(with controller: UINavigationController)
 }
 
 protocol AthleteHomeViewModelViewDelegate {
@@ -40,11 +44,13 @@ final class AthleteHomeViewModel {
     var viewDelegate: AthleteHomeViewModelViewDelegate?
     
     // MARK: - Properties
+    var authService: AuthService
     var quizService: QuizService
     var user: User
     var quizzes: [Quiz] = []
     
-    init(quizService: QuizService, user: User) {
+    init(authService: AuthService, quizService: QuizService, user: User) {
+        self.authService = authService
         self.quizService = quizService
         self.user = user
     }
@@ -92,4 +98,13 @@ extension AthleteHomeViewModel: AthleteHomeViewModelType {
         }
     }
     
+    func logOut(with controller: UINavigationController) {
+        do {
+            try Auth.auth().signOut()
+                coordinatorDelegate?.logOut(with: controller)
+            } catch let error {
+                viewDelegate?.presentError(title: "Can't Log out",
+                                           message: error.localizedDescription)
+        }
+    }
 }

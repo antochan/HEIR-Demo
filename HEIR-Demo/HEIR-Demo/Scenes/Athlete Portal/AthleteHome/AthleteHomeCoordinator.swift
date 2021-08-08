@@ -12,18 +12,23 @@ final class AthleteHomeCoordinator: RootCoordinator, Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
+    private let authService: AuthService
+    private let userService: UserService
     private let quizService: QuizService
     private let user: User
     
     lazy var athleteHomeViewModel: AthleteHomeViewModel? = {
-        let viewModel = AthleteHomeViewModel(quizService: quizService,
+        let viewModel = AthleteHomeViewModel(authService: authService,
+                                             quizService: quizService,
                                              user: user)
         viewModel.coordinatorDelegate = self
         return viewModel
     }()
     
-    init(navigationController: UINavigationController, quizService: QuizService, user: User) {
+    init(navigationController: UINavigationController, authService: AuthService, userService: UserService, quizService: QuizService, user: User) {
         self.navigationController = navigationController
+        self.authService = authService
+        self.userService = userService
         self.quizService = quizService
         self.user = user
     }
@@ -58,5 +63,12 @@ extension AthleteHomeCoordinator: AthleteHomeViewModelCoordinatorDelegate {
                                                           quizService: quizService,
                                                           user: user)
         createQuizCoordinator.start()
+    }
+    
+    func logOut(with controller: UINavigationController) {
+        let authCoordinator = AuthCoordinator(navigationController: navigationController,
+                                              authService: authService,
+                                              userService: userService)
+        authCoordinator.start()
     }
 }

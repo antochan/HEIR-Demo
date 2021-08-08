@@ -97,7 +97,8 @@ extension AthleteHomeViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Log Out", style: .destructive , handler: { _ in
-            print("logged out")
+            guard let controller = self.navigationController else { return }
+            self.viewModel?.logOut(with: controller)
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
