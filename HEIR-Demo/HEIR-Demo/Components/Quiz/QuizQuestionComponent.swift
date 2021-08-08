@@ -49,6 +49,7 @@ final class QuizQuestionComponent: UIView, Component {
         button.titleLabel?.font = UIFont.SFProTextSemibold(size: 10)
         button.setTitle("Delete", for: .normal)
         button.setTitleColor(Color.Primary.ErrorRed, for: .normal)
+        button.isHidden = true
         return button
     }()
     

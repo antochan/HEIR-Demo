@@ -148,6 +148,12 @@ final class CreateQuizView: UIView {
         let component = NoQuestionsComponent()
         return component
     }()
+    
+    let createQuizButton: ButtonComponent = {
+        let button = ButtonComponent()
+        button.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Create Quiz"))
+        return button
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -173,14 +179,16 @@ private extension CreateQuizView {
         addSubviews(backButton, scrollView)
         scrollView.addSubview(contentStackView)
         
-        contentStackView.addArrangedSubviews(quizDetailsStackView, rewardCarousel, questionsStackView)
+        contentStackView.addArrangedSubviews(quizDetailsStackView, rewardCarousel, questionsStackView, createQuizButton)
         quizDetailsStackView.addArrangedSubviews(headerTextStack, quizNameLabel, quizNameTextField, launchDateLabel, launchDateTextField, rewardTitleLabel)
         
         contentStackView.setCustomSpacing(Spacing.sixteen, after: quizDetailsStackView)
+        contentStackView.setCustomSpacing(Spacing.thirtyTwo, after: questionsStackView)
         
         quizDetailsStackView.setCustomSpacing(Spacing.thirtyTwo, after: headerTextStack)
         quizDetailsStackView.setCustomSpacing(Spacing.sixteen, after: quizNameTextField)
         quizDetailsStackView.setCustomSpacing(Spacing.thirtyTwo, after: launchDateTextField)
+        quizDetailsStackView.setCustomSpacing(Spacing.thirtyTwo, after: questionsStackView)
         
         contentStackView.setCustomSpacing(Spacing.twentyFour, after: rewardCarousel)
         
@@ -219,7 +227,9 @@ private extension CreateQuizView {
             questionsStackView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor, constant: -Spacing.fortyEight * 2),
             
             addQuestionButton.heightAnchor.constraint(equalToConstant: 20),
-            addQuestionButton.widthAnchor.constraint(equalToConstant: 20)
+            addQuestionButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            createQuizButton.widthAnchor.constraint(equalTo: quizDetailsStackView.widthAnchor)
         ])
     }
     

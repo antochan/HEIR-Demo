@@ -39,6 +39,10 @@ final class CreateQuizViewController: UIViewController {
         createQuizView.noQuestionsComponent.actions = { [weak self] _ in
             self?.addQuestionTapped()
         }
+        
+        createQuizView.quizNameTextField.addTarget(self, action: #selector(textFieldDidChangeAction(_:)), for: .editingChanged)
+        createQuizView.launchDateTextField.addInputViewDatePicker(target: self, selector: #selector(dateSelected))
+        createQuizView.createQuizButton.addTarget(self, action: #selector(createQuiz), for: .touchUpInside)
     }
     
     func createMultipleChoiceView(question: Question, totalQuestionCount: Int, questionIndex: Int) -> QuizQuestionComponent {
@@ -74,10 +78,13 @@ extension CreateQuizViewController: CreateQuizViewModelViewDelegate {
                                                                                       totalQuestionCount: viewModel.questions.count,
                                                                                       questionIndex: index + 1))
         }
+        
+        createQuizView.createQuizButton.isEnabled = viewModel.isFormComplete
     }
     
     func loading(_ isLoading: Bool) {
-        
+        createQuizView.isUserInteractionEnabled = !isLoading
+        createQuizView.createQuizButton.loadingIndicator(isLoading)
     }
     
     func presentError(title: String, message: String?) {
@@ -97,6 +104,25 @@ extension CreateQuizViewController {
     @objc func addQuestionTapped() {
         guard let controller = navigationController else { return }
         viewModel?.addQuestion(with: controller)
+    }
+    
+    @objc func dateSelected() {
+        if let  datePicker = createQuizView.launchDateTextField.inputView as? UIDatePicker {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd, yyyy HH:mm"
+            createQuizView.launchDateTextField.text = dateFormatter.string(from: datePicker.date)
+            viewModel?.set(launchDate: datePicker.date.timeIntervalSince1970)
+        }
+        createQuizView.launchDateTextField.resignFirstResponder()
+     }
+    
+    @objc func textFieldDidChangeAction(_ textField: UITextField) {
+        viewModel?.set(quizName: textField.text)
+    }
+    
+    @objc func createQuiz() {
+        guard let controller = navigationController else { return }
+        viewModel?.createQuiz(with: controller)
     }
 }
 
