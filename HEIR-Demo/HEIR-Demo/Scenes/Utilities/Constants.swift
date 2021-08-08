@@ -99,5 +99,6 @@ struct Color {
         static let LightGray = UIColor(rgb: 0xEEEEEE)
         static let OffWhite = UIColor(rgb: 0xF7F7F7)
         static let DarkGray = UIColor(rgb: 0xC4C4C4)
+        static let ErrorRed = UIColor(rgb: 0xFF6961)
     }
 }

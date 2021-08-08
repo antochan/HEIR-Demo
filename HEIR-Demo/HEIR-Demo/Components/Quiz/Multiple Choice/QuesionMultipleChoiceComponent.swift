@@ -61,7 +61,6 @@ final class QuesionMultipleChoiceComponent: UIView, Component {
     
     func apply(viewModel: ViewModel) {
         selectButton.backgroundColor = viewModel.isSelected ? Color.Primary.Black.withAlphaComponent(0.5) : .clear
-        selectButton.isUserInteractionEnabled = viewModel.isInteractable
         answerLabel.text = viewModel.answer
     }
     

@@ -16,6 +16,10 @@ final class QuizQuestionComponent: UIView, Component {
         let currentQuestionIndex: Int
     }
     
+    public var actions: Actions?
+    
+    private var question: Question?
+    
     private let questionCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +43,15 @@ final class QuizQuestionComponent: UIView, Component {
         return stackView
     }()
     
+    private let deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.SFProTextSemibold(size: 10)
+        button.setTitle("Delete", for: .normal)
+        button.setTitleColor(Color.Primary.ErrorRed, for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -50,6 +63,8 @@ final class QuizQuestionComponent: UIView, Component {
     }
     
     func apply(viewModel: ViewModel) {
+        question = viewModel.question
+        deleteButton.isHidden = !viewModel.isInCreation
         questionCountLabel.textColor = viewModel.isInCreation ? Color.Primary.Black : Color.Primary.White
         questionCountLabel.text = "Question \(viewModel.currentQuestionIndex) of \(viewModel.totalQuestionCount)"
         questionLabel.text = viewModel.question.question
@@ -58,6 +73,11 @@ final class QuizQuestionComponent: UIView, Component {
                                                                              isSelected: $0 == viewModel.question.answer,
                                                                              isInCreation: viewModel.isInCreation))
         }
+    }
+    
+    @objc func deleteTapped() {
+        guard let question = question else { return }
+        actions?(.deleteTapped(question))
     }
 }
 
@@ -68,14 +88,19 @@ private extension QuizQuestionComponent {
     }
     
     func configureSubviews() {
-        addSubviews(questionCountLabel, questionLabel, multipleChoiceStack)
+        addSubviews(questionCountLabel, questionLabel, multipleChoiceStack, deleteButton)
+        
+        deleteButton.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
     }
     
     func configureLayout() {
         NSLayoutConstraint.activate([
             questionCountLabel.topAnchor.constraint(equalTo: topAnchor),
             questionCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            questionCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            questionCountLabel.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor),
+            
+            deleteButton.centerYAnchor.constraint(equalTo: questionCountLabel.centerYAnchor),
+            deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.eight),
             
             questionLabel.topAnchor.constraint(equalTo: questionCountLabel.bottomAnchor, constant: Spacing.four),
             questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -94,5 +119,15 @@ private extension QuizQuestionComponent {
                                                                             isSelected: isSelected,
                                                                             isInteractable: !isInCreation))
         return component
+    }
+}
+
+//MARK: - Actionable
+
+extension QuizQuestionComponent: Actionable {
+    public typealias Actions = (Action) -> Void
+    
+    public enum Action {
+        case deleteTapped(Question)
     }
 }

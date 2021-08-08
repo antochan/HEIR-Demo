@@ -43,6 +43,14 @@ final class CreateQuizViewController: UIViewController {
     
     func createMultipleChoiceView(question: Question, totalQuestionCount: Int, questionIndex: Int) -> QuizQuestionComponent {
         let component = QuizQuestionComponent()
+        component.actions = { [weak self] action in
+            switch action {
+            case .deleteTapped(let question):
+                self?.viewModel?.remove(question: question)
+            default:
+                break
+            }
+        }
         component.apply(viewModel: QuizQuestionComponent.ViewModel(isInCreation: true,
                                                                    question: question,
                                                                    totalQuestionCount: totalQuestionCount,

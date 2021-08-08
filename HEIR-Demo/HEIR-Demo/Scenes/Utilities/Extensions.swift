@@ -185,8 +185,10 @@ extension UIColor {
     }
 }
 
-extension Optional where Wrapped: OptionalString {
+extension Optional where Wrapped == String {
+
     var isNilOrEmpty: Bool {
-        return ((self as? String) ?? "").isEmpty
+        return self?.isEmpty ?? true
     }
+
 }

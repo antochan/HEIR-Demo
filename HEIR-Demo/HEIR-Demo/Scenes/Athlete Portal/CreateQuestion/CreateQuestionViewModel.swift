@@ -69,7 +69,7 @@ extension CreateQuestionViewModel: CreateQuestionViewModelType {
               !answerTwo.isNilOrEmpty,
               !answerThree.isNilOrEmpty,
               !answerFour.isNilOrEmpty,
-              !selectedAnswer.isNilOrEmpty else {
+              selectedAnswer != nil else {
             return false
         }
         return true

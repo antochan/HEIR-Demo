@@ -21,6 +21,7 @@ protocol CreateQuizViewModelType {
     func viewDidLoad()
     func rewardSelected(reward: Reward)
     func backTapped(with controller: UINavigationController)
+    func remove(question: Question)
     func addQuestion(with controller: UINavigationController)
 }
 
@@ -65,6 +66,11 @@ extension CreateQuizViewModel: CreateQuizViewModelType {
     
     func backTapped(with controller: UINavigationController) {
         coordinatorDelegate?.dismiss(with: controller)
+    }
+    
+    func remove(question: Question) {
+        questions.removeAll { $0 == question }
+        viewDelegate?.updateScreen()
     }
     
     func addQuestion(with controller: UINavigationController) {

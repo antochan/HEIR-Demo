@@ -129,7 +129,7 @@ final class CreateQuizView: UIView {
     let questionStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = Spacing.eight
+        stackView.spacing = Spacing.sixteen
         return stackView
     }()
     
