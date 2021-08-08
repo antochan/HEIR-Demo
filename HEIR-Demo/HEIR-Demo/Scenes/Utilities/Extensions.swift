@@ -225,3 +225,31 @@ extension Encodable {
         return json
     }
 }
+
+extension UIView {
+    func fadeOut(duration: TimeInterval = 0.1, delay: TimeInterval = 0) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.alpha = 0
+        }, completion: { finished in
+            self.isHidden = true
+        })
+    }
+    
+    func fadeIn(duration: TimeInterval = 0.1, delay: TimeInterval = 0) {
+        isHidden = false
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.alpha = 1
+        }, completion: { finished in
+            self.isHidden = false
+        })
+    }
+    
+    func fadeTransition(_ duration:CFTimeInterval) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.duration = duration
+        layer.add(animation, forKey: CATransitionType.fade.rawValue)
+    }
+}

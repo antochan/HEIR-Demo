@@ -9,13 +9,6 @@ import UIKit
 
 final class AuthView: UIView {
     
-    private let topHalfView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
-    }()
-    
     private let bottomHalfView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +22,7 @@ final class AuthView: UIView {
         imageView.image = #imageLiteral(resourceName: "Logo")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.alpha = 0
         return imageView
     }()
     
@@ -37,6 +31,7 @@ final class AuthView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = Spacing.twelve
+        stackView.alpha = 0
         return stackView
     }()
     
@@ -76,6 +71,19 @@ final class AuthView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func appearAnimation() {
+        logoImageView.transform = .identity
+        logoImageView.fadeIn(duration: 0.6, delay: 0)
+        UIView.animate(withDuration: 0.6,
+                       delay: 0.8,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseIn) {
+            self.logoImageView.transform = CGAffineTransform(translationX: 0, y: -125)
+        }
+        textfieldStackView.fadeIn(duration: 0.4, delay: 1)
+    }
+    
 }
 
 private extension AuthView {
@@ -87,8 +95,7 @@ private extension AuthView {
     }
     
     func configureSubviews() {
-        addSubviews(topHalfView, bottomHalfView)
-        topHalfView.addSubview(logoImageView)
+        addSubviews(logoImageView, bottomHalfView)
         bottomHalfView.addSubview(textfieldStackView)
         textfieldStackView.addArrangedSubviews(emailTextField, passwordTextField, loginButton)
         
@@ -97,18 +104,13 @@ private extension AuthView {
     
     func configureLayout() {
         NSLayoutConstraint.activate([
-            topHalfView.topAnchor.constraint(equalTo: topAnchor),
-            topHalfView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            topHalfView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            topHalfView.bottomAnchor.constraint(equalTo: centerYAnchor),
-            
             bottomHalfView.topAnchor.constraint(equalTo: centerYAnchor),
             bottomHalfView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomHalfView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomHalfView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            logoImageView.centerXAnchor.constraint(equalTo: topHalfView.centerXAnchor),
-            logoImageView.centerYAnchor.constraint(equalTo: topHalfView.centerYAnchor),
+            logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 87),
             logoImageView.widthAnchor.constraint(equalToConstant: 190),
             

@@ -27,6 +27,7 @@ final class AuthViewController: UIViewController {
         super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
 
+        authView.appearAnimation()
     }
 
     override func viewDidLoad() {
