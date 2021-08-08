@@ -60,6 +60,7 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
         label.font = UIFont.SFProTextRegular(size: 12)
         label.text = "--h --m --s"
         label.numberOfLines = 1
+        label.layer.cornerRadius = 8
         label.isSkeletonable = true
         label.showAnimatedSkeleton()
         return label

@@ -39,10 +39,18 @@ final class AthleteHomeView: UIView {
         return label
     }()
     
-    let quizComponent: QuizOverviewComponent = {
-        let component = QuizOverviewComponent()
-        component.translatesAutoresizingMaskIntoConstraints = false
-        return component
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private let contentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.eight
+        return stackView
     }()
     
     private let quizzesTitleStack: UIStackView = {
@@ -50,6 +58,8 @@ final class AthleteHomeView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = Spacing.sixteen
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: Spacing.zero, leading: Spacing.twentyFour, bottom: Spacing.zero, trailing: Spacing.twentyFour)
         return stackView
     }()
     
@@ -58,6 +68,11 @@ final class AthleteHomeView: UIView {
         label.font = UIFont.SFProTextSemibold(size: 18)
         label.text = "Your Quizzes"
         return label
+    }()
+    
+    let quizzesCarouselComponent: QuizzesCarouselComponent = {
+        let component = QuizzesCarouselComponent()
+        return component
     }()
     
     let createQuizButton: UIButton = {
@@ -69,6 +84,28 @@ final class AthleteHomeView: UIView {
         button.layer.cornerRadius = 12.5
         button.clipsToBounds = true
         return button
+    }()
+    
+    private let rewardsTitleStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = Spacing.sixteen
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: Spacing.zero, leading: Spacing.twentyFour, bottom: Spacing.zero, trailing: Spacing.twentyFour)
+        return stackView
+    }()
+    
+    private let rewardsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.SFProTextSemibold(size: 18)
+        label.text = "Your Rewards Inventory"
+        return label
+    }()
+    
+    let rewardCarousel: RewardCarouselComponent = {
+        let component = RewardCarouselComponent()
+        return component
     }()
 
     override init(frame: CGRect) {
@@ -92,9 +129,15 @@ private extension AthleteHomeView {
     }
     
     func configureSubviews() {
-        addSubviews(profileImageView, headerTextStack, quizzesTitleStack, quizComponent)
-        quizzesTitleStack.addArrangedSubviews(quizzesTitleLabel, createQuizButton)
+        addSubviews(profileImageView, headerTextStack, scrollView)
         headerTextStack.addArrangedSubviews(welcomeLabel, athleteNameLabel)
+        scrollView.addSubview(contentStackView)
+        
+        contentStackView.addArrangedSubviews(quizzesTitleStack, quizzesCarouselComponent, rewardsTitleStack, rewardCarousel)
+        quizzesTitleStack.addArrangedSubviews(quizzesTitleLabel, createQuizButton, UIView())
+        rewardsTitleStack.addArrangedSubviews(rewardsTitleLabel)
+        
+        contentStackView.setCustomSpacing(Spacing.thirtyTwo, after: quizzesCarouselComponent)
     }
     
     func configureLayout() {
@@ -109,16 +152,21 @@ private extension AthleteHomeView {
             profileImageView.heightAnchor.constraint(equalToConstant: 40),
             profileImageView.widthAnchor.constraint(equalToConstant: 40),
             
-            quizzesTitleStack.topAnchor.constraint(equalTo: athleteNameLabel.bottomAnchor, constant: Spacing.forty),
-            quizzesTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.twentyFour),
+            scrollView.topAnchor.constraint(equalTo: headerTextStack.bottomAnchor, constant: Spacing.twentyFour),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Spacing.thirtyTwo),
+            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             createQuizButton.heightAnchor.constraint(equalToConstant: 25),
             createQuizButton.widthAnchor.constraint(equalToConstant: 25),
             
-            quizComponent.centerYAnchor.constraint(equalTo: centerYAnchor),
-            quizComponent.centerXAnchor.constraint(equalTo: centerXAnchor),
-            quizComponent.widthAnchor.constraint(equalToConstant: 275),
-            quizComponent.heightAnchor.constraint(equalToConstant: 125),
+            quizzesCarouselComponent.heightAnchor.constraint(equalToConstant: 125)
         ])
     }
     

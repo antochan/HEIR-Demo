@@ -14,9 +14,11 @@ protocol AthleteHomeViewModelType {
     // Data Source
     var quizService: QuizService { get }
     var user: User { get }
+    var quizzes: [Quiz] { get }
     
     /// Events
     func viewDidLoad()
+    func fetchQuizzes()
     func createQuiz(with controller: UINavigationController)
 }
 
@@ -38,6 +40,7 @@ final class AthleteHomeViewModel {
     // MARK: - Properties
     var quizService: QuizService
     var user: User
+    var quizzes: [Quiz] = []
     
     init(quizService: QuizService, user: User) {
         self.quizService = quizService
@@ -50,6 +53,22 @@ extension AthleteHomeViewModel: AthleteHomeViewModelType {
     
     func viewDidLoad() {
         viewDelegate?.updateScreen()
+        fetchQuizzes()
+    }
+    
+    func fetchQuizzes() {
+        viewDelegate?.loading(true)
+        quizService.getQuizzes(athleteId: user.id) { [weak self] result in
+            self?.viewDelegate?.loading(false)
+            switch result {
+            case .success(let quizzes):
+                self?.quizzes = quizzes
+                self?.viewDelegate?.updateScreen()
+            case .failure(let error):
+                self?.viewDelegate?.presentError(title: "Something went wrong",
+                                                 message: error.errorDescription)
+            }
+        }
     }
     
     func createQuiz(with controller: UINavigationController) {

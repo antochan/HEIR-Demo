@@ -64,6 +64,9 @@
 		8A94AFB526BF3B0B0012BD79 /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */; };
 		8A94AFB726BF47480012BD79 /* QuesionMultipleChoiceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB626BF47480012BD79 /* QuesionMultipleChoiceComponent.swift */; };
 		8A94AFBA26BF49CD0012BD79 /* QuizQuestionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFB926BF49CD0012BD79 /* QuizQuestionComponent.swift */; };
+		8A94AFBD26BFC1280012BD79 /* QuizzesCarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFBC26BFC1280012BD79 /* QuizzesCarouselComponent.swift */; };
+		8A94AFC126BFC1B40012BD79 /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFBF26BFC1B40012BD79 /* ComponentCollectionViewCell.swift */; };
+		8A94AFC226BFC1B40012BD79 /* ComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFC026BFC1B40012BD79 /* ComponentTableViewCell.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +157,9 @@
 		8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
 		8A94AFB626BF47480012BD79 /* QuesionMultipleChoiceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuesionMultipleChoiceComponent.swift; sourceTree = "<group>"; };
 		8A94AFB926BF49CD0012BD79 /* QuizQuestionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionComponent.swift; sourceTree = "<group>"; };
+		8A94AFBC26BFC1280012BD79 /* QuizzesCarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesCarouselComponent.swift; sourceTree = "<group>"; };
+		8A94AFBF26BFC1B40012BD79 /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A94AFC026BFC1B40012BD79 /* ComponentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentTableViewCell.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -324,7 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				8A94AF6026BD0C210012BD79 /* Protocols */,
-				8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */,
+				8A94AFBE26BFC1A10012BD79 /* General */,
 				8A94AF9426BE69C60012BD79 /* Quiz */,
 			);
 			path = Components;
@@ -410,6 +416,7 @@
 				8A94AFA226BF058B0012BD79 /* RewardCarouselComponent.swift */,
 				8A94AFA626BF14D90012BD79 /* NoQuestionsComponent.swift */,
 				8A94AFB926BF49CD0012BD79 /* QuizQuestionComponent.swift */,
+				8A94AFBC26BFC1280012BD79 /* QuizzesCarouselComponent.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -443,6 +450,16 @@
 				8A94AFB626BF47480012BD79 /* QuesionMultipleChoiceComponent.swift */,
 			);
 			path = "Multiple Choice";
+			sourceTree = "<group>";
+		};
+		8A94AFBE26BFC1A10012BD79 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */,
+				8A94AFBF26BFC1B40012BD79 /* ComponentCollectionViewCell.swift */,
+				8A94AFC026BFC1B40012BD79 /* ComponentTableViewCell.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -721,10 +738,12 @@
 				8A94AF8C26BE590C0012BD79 /* AthleteHomeView.swift in Sources */,
 				8A94AF4726BCFC210012BD79 /* AppCoordinator.swift in Sources */,
 				8A94AF7A26BD21F40012BD79 /* DatabaseReference+toLocation.swift in Sources */,
+				8A94AFC126BFC1B40012BD79 /* ComponentCollectionViewCell.swift in Sources */,
 				8A94AFA326BF058B0012BD79 /* RewardCarouselComponent.swift in Sources */,
 				8A94AF4226BCFBE60012BD79 /* RootCoordinator.swift in Sources */,
 				8A94AF7326BD1FEB0012BD79 /* UserService.swift in Sources */,
 				8A94AFAF26BF19610012BD79 /* CreateQuestionViewController.swift in Sources */,
+				8A94AFBD26BFC1280012BD79 /* QuizzesCarouselComponent.swift in Sources */,
 				8A94AF6626BD0C350012BD79 /* PressScalable.swift in Sources */,
 				8A94AF9126BE64100012BD79 /* QuizService.swift in Sources */,
 				8A94AF5D26BD09C90012BD79 /* Fonts.swift in Sources */,
@@ -733,6 +752,7 @@
 				8A94AF8E26BE590C0012BD79 /* AthleteHomeViewModel.swift in Sources */,
 				8A94AFB726BF47480012BD79 /* QuesionMultipleChoiceComponent.swift in Sources */,
 				8A94AF6A26BD0C550012BD79 /* ButtonComponent.swift in Sources */,
+				8A94AFC226BFC1B40012BD79 /* ComponentTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
