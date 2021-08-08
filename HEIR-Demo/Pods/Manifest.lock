@@ -332,6 +332,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.6.1)
+  - Hero (1.6.1)
   - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (6.3.1)
   - leveldb-library (1.22.1)
@@ -350,6 +351,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift
+  - Hero
   - IQKeyboardManagerSwift
   - Kingfisher
   - SkeletonView
@@ -374,6 +376,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - Hero
     - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
@@ -400,6 +403,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
+  Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
@@ -407,6 +411,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SkeletonView: a085533443fed0198309f1979780afb6e80eaedd
 
-PODFILE CHECKSUM: fcbc7a7965456803c49d33124a4ecb86bb229868
+PODFILE CHECKSUM: 3eb703dff65b2b1d5a4a184c2809ad8b378d7c5a
 
 COCOAPODS: 1.10.1

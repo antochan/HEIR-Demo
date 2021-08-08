@@ -7,6 +7,8 @@
 
 import UIKit
 
+public let LameloBallUID = "kJuAKkG5cnhdVUf98aFl20qWpEy1"
+
 public enum Spacing {
     public static let zero: CGFloat = 0
     public static let four: CGFloat = 4

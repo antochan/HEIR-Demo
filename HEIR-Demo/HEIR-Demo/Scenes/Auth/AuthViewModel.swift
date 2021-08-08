@@ -22,6 +22,7 @@ protocol AuthViewModelType {
 
 protocol AuthViewModelCoordinatorDelegate: AnyObject {
     func routeToAthletePortal(with controller: UINavigationController, user: User)
+    func routeToFanPortal(with controller: UINavigationController, user: User)
 }
 
 protocol AuthViewModelViewDelegate {
@@ -82,7 +83,8 @@ extension AuthViewModel: AuthViewModelType {
                     self?.coordinatorDelegate?.routeToAthletePortal(with: controller,
                                                                     user: user)
                 case .fan:
-                    print("fan portal 🚀")
+                    self?.coordinatorDelegate?.routeToFanPortal(with: controller,
+                                                                user: user)
                 }
             case .failure(let error):
                 self?.viewDelegate?.presentError(title: "Oops, Something went wrong",
