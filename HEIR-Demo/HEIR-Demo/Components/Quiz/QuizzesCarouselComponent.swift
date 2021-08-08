@@ -6,20 +6,25 @@
 //
 
 import UIKit
+import SkeletonView
 
 protocol QuizzesCarouselComponentDelegate: AnyObject {
     func quizSelected(quiz: Quiz)
+    func quizDelete(quiz: Quiz)
 }
 
 final class QuizzesCarouselComponent: UIView, Component, Reusable {
     struct ViewModel {
         var quizzes: [Quiz]
+        var isAthletePortal: Bool
         
-        init(quizzes: [Quiz]) {
+        init(quizzes: [Quiz], isAthletePortal: Bool) {
             self.quizzes = quizzes
+            self.isAthletePortal = isAthletePortal
         }
         
-        static let defaultViewModel = ViewModel(quizzes: [])
+        static let defaultViewModel = ViewModel(quizzes: [],
+                                                isAthletePortal: false)
     }
     
     private var viewModel = ViewModel.defaultViewModel {
@@ -39,6 +44,7 @@ final class QuizzesCarouselComponent: UIView, Component, Reusable {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = Color.Primary.White
         collectionView.contentInset = UIEdgeInsets(top: 0, left: Spacing.twelve, bottom: 0, right: Spacing.twelve)
+        collectionView.isSkeletonable = true
         return collectionView
     }()
     
@@ -69,6 +75,7 @@ private extension QuizzesCarouselComponent {
         configureSubviews()
         configureLayout()
         configureCollectionView()
+        isSkeletonable = true
     }
     
     func configureSubviews() {
@@ -100,11 +107,15 @@ extension QuizzesCarouselComponent: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuizOverviewCell", for: indexPath) as! ComponentCollectionViewCell<QuizOverviewComponent>
-        let cellVM = ComponentCollectionViewCell<QuizOverviewComponent>.ViewModel(componentViewModel: QuizOverviewComponent.ViewModel(quiz: viewModel.quizzes[indexPath.row]))
+        let cellVM = ComponentCollectionViewCell<QuizOverviewComponent>.ViewModel(componentViewModel: QuizOverviewComponent.ViewModel(canDelete: canDelete(quiz: viewModel.quizzes[indexPath.row],
+                                                                                                                                                           isAthetePortal: viewModel.isAthletePortal),
+                                                                                                                                      quiz: viewModel.quizzes[indexPath.row]))
         cell.component.actions = { [weak self] action in
             switch action {
             case .quizSelected(let quiz):
                 self?.delegate?.quizSelected(quiz: quiz)
+            case .delete(let quiz):
+                self?.delegate?.quizDelete(quiz: quiz)
             }
         }
         cell.apply(viewModel: cellVM)
@@ -113,5 +124,20 @@ extension QuizzesCarouselComponent: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 275, height: 125)
+    }
+}
+
+func canDelete(quiz: Quiz, isAthetePortal: Bool) -> Bool {
+    // If we are in between the launch and end
+    if Date().timeIntervalSince1970 >= quiz.launchTime && Date().timeIntervalSince1970 <= quiz.endTime {
+        return false
+    }
+    // We're past the launch date
+    else if Date().timeIntervalSince1970 > quiz.endTime {
+        return false
+    }
+    // We are waiting for launch
+    else {
+        return isAthetePortal
     }
 }

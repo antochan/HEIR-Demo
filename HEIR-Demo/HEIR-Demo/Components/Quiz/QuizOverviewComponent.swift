@@ -10,6 +10,7 @@ import SkeletonView
 
 final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
     struct ViewModel {
+        let canDelete: Bool
         let quiz: Quiz
     }
     
@@ -18,6 +19,19 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
     public let configuration = PressableConfiguration(pressScale: .medium)
     
     private var quiz: Quiz?
+    
+    private let deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Color.Primary.Black
+        button.tintColor = Color.Primary.White
+        button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        button.isHidden = true
+        return button
+    }()
 
     private let cardView: UIView = {
         let view = UIView()
@@ -33,6 +47,7 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = Spacing.four
+        stackView.isSkeletonable = true
         return stackView
     }()
     
@@ -42,6 +57,7 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
         label.font = UIFont.SFProTextRegular(size: 12)
         label.textColor = Color.Primary.GrayText
         label.numberOfLines = 1
+        label.isSkeletonable = true
         return label
     }()
     
@@ -112,7 +128,7 @@ final class QuizOverviewComponent: UIView, Component, Pressable, Reusable {
         quizNameLabel.text = viewModel.quiz.quizName
         rewardLabel.text = viewModel.quiz.reward.title
         rewardImage.image = viewModel.quiz.reward.image
-        
+        deleteButton.isHidden = !viewModel.canDelete
     }
     
     func prepareForReuse() {
@@ -129,10 +145,12 @@ private extension QuizOverviewComponent {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         addGestureRecognizer(tap)
+        
+        deleteButton.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
     }
     
     func configureSubviews() {
-        addSubview(cardView)
+        addSubviews(cardView, deleteButton)
         cardView.addSubviews(rewardImage, titleContentStack)
         titleContentStack.addArrangedSubviews(quizNameLabel, rewardLabel, launchTimeLabel, launchButton)
         
@@ -145,6 +163,11 @@ private extension QuizOverviewComponent {
             cardView.leadingAnchor.constraint(equalTo: leadingAnchor),
             cardView.trailingAnchor.constraint(equalTo: trailingAnchor),
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            deleteButton.centerXAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -Spacing.eight),
+            deleteButton.centerYAnchor.constraint(equalTo: cardView.topAnchor, constant: Spacing.eight),
+            deleteButton.heightAnchor.constraint(equalToConstant: 20),
+            deleteButton.widthAnchor.constraint(equalToConstant: 20),
             
             titleContentStack.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             titleContentStack.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: Spacing.sixteen),
@@ -163,6 +186,12 @@ private extension QuizOverviewComponent {
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         if let quiz = quiz {
             actions?(.quizSelected(quiz))
+        }
+    }
+    
+    @objc func deleteTapped() {
+        if let quiz = quiz {
+            actions?(.delete(quiz))
         }
     }
     
@@ -214,5 +243,6 @@ extension QuizOverviewComponent: Actionable {
     
     public enum Action {
         case quizSelected(Quiz)
+        case delete(Quiz)
     }
 }

@@ -20,6 +20,7 @@ protocol AthleteHomeViewModelType {
     func viewDidLoad()
     func fetchQuizzes()
     func createQuiz(with controller: UINavigationController)
+    func deleteQuiz(quiz: Quiz)
 }
 
 protocol AthleteHomeViewModelCoordinatorDelegate: AnyObject {
@@ -29,6 +30,7 @@ protocol AthleteHomeViewModelCoordinatorDelegate: AnyObject {
 protocol AthleteHomeViewModelViewDelegate {
     func updateScreen()
     func loading(_ isLoading: Bool)
+    func loader(shouldShow: Bool, message: String?)
     func presentError(title: String, message: String?)
 }
 
@@ -73,6 +75,21 @@ extension AthleteHomeViewModel: AthleteHomeViewModelType {
     
     func createQuiz(with controller: UINavigationController) {
         coordinatorDelegate?.createQuiz(with: controller, user: user)
+    }
+    
+    func deleteQuiz(quiz: Quiz) {
+        viewDelegate?.loader(shouldShow: true, message: "Deleting...")
+        quizService.deleteQuiz(athleteId: user.id,
+                               quizId: quiz.id) { [weak self] result in
+            self?.viewDelegate?.loader(shouldShow: false, message: nil)
+            switch result {
+            case .success:
+                self?.fetchQuizzes()
+            case .failure(let error):
+                self?.viewDelegate?.presentError(title: "Couldn't delete quiz",
+                                                 message: error.errorDescription)
+            }
+        }
     }
     
 }

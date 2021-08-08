@@ -166,7 +166,7 @@ private extension AthleteHomeView {
             createQuizButton.heightAnchor.constraint(equalToConstant: 25),
             createQuizButton.widthAnchor.constraint(equalToConstant: 25),
             
-            quizzesCarouselComponent.heightAnchor.constraint(equalToConstant: 125)
+            quizzesCarouselComponent.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
     

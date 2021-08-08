@@ -11,6 +11,7 @@ import CodableFirebase
 final class QuizService {
     typealias getQuizzesCompletion = (_ result: Result<[Quiz], AppError>) -> Void
     typealias uploadQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
+    typealias deleteQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     
     func getQuizzes(athleteId: String, completion: @escaping getQuizzesCompletion) {
         CollectionReference.toLocation(.quiz)
@@ -75,5 +76,20 @@ final class QuizService {
                 completion(.success(true))
             }
         }
+    }
+    
+    func deleteQuiz(athleteId: String, quizId: String, completion: @escaping uploadQuizCompletion) {
+        CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quizId)
+            .delete { error in
+                if let error = error {
+                    completion(.failure(.network(type: .custom(errorCode: error.code,
+                                                               errorDescription: error.localizedDescription))))
+                } else {
+                    completion(.success(true))
+                }
+            }
     }
 }
