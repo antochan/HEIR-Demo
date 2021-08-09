@@ -22,7 +22,7 @@ final class QuizService {
         CollectionReference.toLocation(.quiz)
             .document(athleteId)
             .collection("quizzes")
-            .order(by: "launchTime", descending: false)
+            .order(by: "launchTime", descending: true)
             .getDocuments { (snapshot, error) in
                 if let error = error {
                     completion(.failure(.network(type: .custom(errorCode: error.code,
