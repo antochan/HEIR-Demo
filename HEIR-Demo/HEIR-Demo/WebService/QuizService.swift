@@ -10,6 +10,7 @@ import CodableFirebase
 
 final class QuizService {
     typealias getQuizzesCompletion = (_ result: Result<[Quiz], AppError>) -> Void
+    typealias getQuizCompletion = (_ result: Result<[Question], AppError>) -> Void
     typealias uploadQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     typealias deleteQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     
@@ -36,6 +37,33 @@ final class QuizService {
                 }
                 
                 completion(.success(quizzes))
+            }
+    }
+    
+    func getQuizQuestions(athleteId: String, quiz: Quiz, completion: @escaping getQuizCompletion) {
+        CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quiz.id)
+            .collection("quizContent")
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(.failure(.network(type: .custom(errorCode: error.code,
+                                                               errorDescription: error.localizedDescription))))
+                }
+                
+                var questions: [Question] = []
+                for document in snapshot?.documents ?? [] {
+                    let question: Question
+                    do {
+                        try question = FirestoreDecoder().decode(Question.self, from: document.data())
+                        questions.append(question)
+                    } catch let decodeError {
+                        completion(.failure(.file(type: .custom(errorDescription: decodeError.localizedDescription))))
+                    }
+                }
+                
+                completion(.success(questions))
             }
     }
     

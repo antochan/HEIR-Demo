@@ -504,8 +504,16 @@
 				8A94AFD126C0A4A80012BD79 /* HuddleView.swift */,
 				8A94AFCF26C0A4A80012BD79 /* HuddleViewController.swift */,
 				8A94AFD226C0A4A80012BD79 /* HuddleViewModel.swift */,
+				8A94AFD926C0DF010012BD79 /* Quiz */,
 			);
 			path = Huddle;
+			sourceTree = "<group>";
+		};
+		8A94AFD926C0DF010012BD79 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quiz;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

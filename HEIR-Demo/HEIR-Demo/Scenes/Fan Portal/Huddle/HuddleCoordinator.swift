@@ -57,6 +57,10 @@ final class HuddleCoordinator: RootCoordinator, Coordinator {
 
 extension HuddleCoordinator: HuddleViewModelCoordinatorDelegate {
     
+    func launchQuiz(with controller: UINavigationController, questions: [Question]) {
+        
+    }
+    
     func close(with controller: UINavigationController) {
         controller.dismiss(animated: true)
     }

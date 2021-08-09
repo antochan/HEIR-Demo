@@ -20,16 +20,19 @@ protocol HuddleViewModelType {
     /// Events
     func viewDidLoad()
     func fetchQuizzes()
+    func launchQuiz(with controller: UINavigationController, quiz: Quiz)
     func close(with controller: UINavigationController)
 }
 
 protocol HuddleViewModelCoordinatorDelegate: AnyObject {
+    func launchQuiz(with controller: UINavigationController, questions: [Question])
     func close(with controller: UINavigationController)
 }
 
 protocol HuddleViewModelViewDelegate {
     func updateScreen()
     func loading(_ isLoading: Bool)
+    func loader(shouldShow: Bool, message: String?)
     func presentError(title: String, message: String?)
 }
 
@@ -65,6 +68,22 @@ extension HuddleViewModel: HuddleViewModelType {
             case .success(let quizzes):
                 self?.quizzes = quizzes
                 self?.viewDelegate?.updateScreen()
+            case .failure(let error):
+                self?.viewDelegate?.presentError(title: "Something went wrong",
+                                                 message: error.errorDescription)
+            }
+        }
+    }
+    
+    func launchQuiz(with controller: UINavigationController, quiz: Quiz) {
+        viewDelegate?.loader(shouldShow: true, message: "Launching Quiz")
+        quizService.getQuizQuestions(athleteId: athleteId,
+                                     quiz: quiz) { [weak self] result in
+            self?.viewDelegate?.loader(shouldShow: false, message: nil)
+            switch result {
+            case .success(let questions):
+                self?.coordinatorDelegate?.launchQuiz(with: controller,
+                                                      questions: questions)
             case .failure(let error):
                 self?.viewDelegate?.presentError(title: "Something went wrong",
                                                  message: error.errorDescription)

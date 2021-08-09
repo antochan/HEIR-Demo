@@ -40,6 +40,7 @@ final class HuddleViewController: UIViewController {
     
     func setupActions() {
         huddleView.closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        huddleView.quizzesCarouselComponent.delegate = self
     }
 }
 
@@ -65,6 +66,14 @@ extension HuddleViewController: HuddleViewModelViewDelegate {
         }
     }
     
+    func loader(shouldShow: Bool, message: String?) {
+        if shouldShow {
+            displayLoading(message: message)
+        } else {
+            dismissAlert()
+        }
+    }
+    
     func presentError(title: String, message: String?) {
         displayAlert(message: message, title: title)
     }
@@ -80,3 +89,18 @@ extension HuddleViewController {
     }
     
 }
+
+// MARK: - QuizzesCarouselComponentDelegate
+
+extension HuddleViewController: QuizzesCarouselComponentDelegate {
+    func quizSelected(quiz: Quiz) {
+        // TODO : Do logic around the launch time etc for now always launch quiz
+        print(quiz)
+    }
+    
+    func quizDelete(quiz: Quiz) {
+        // There is no delete option on this scene
+        // no - op
+    }
+}
+
