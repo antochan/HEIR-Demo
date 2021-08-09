@@ -39,10 +39,12 @@ final class FanHomeViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         fanHomeView.profileImageView.addGestureRecognizer(tap)
         
-        fanHomeView.lameloBallCard.actions = { action in
+        fanHomeView.lameloBallCard.actions = { [weak self] action in
             switch action {
             case .athleteSelected(let athleteId):
-                print(athleteId)
+                guard let controller = self?.navigationController else { return }
+                self?.viewModel?.enterHuddle(with: controller,
+                                             athleteId: athleteId)
             }
         }
     }

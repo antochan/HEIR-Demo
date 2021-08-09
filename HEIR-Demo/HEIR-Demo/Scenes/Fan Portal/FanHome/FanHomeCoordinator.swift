@@ -58,7 +58,16 @@ final class FanHomeCoordinator: RootCoordinator, Coordinator {
 
 extension FanHomeCoordinator: FanHomeViewModelCoordinatorDelegate {
     
+    func enterHuddle(with controller: UINavigationController, athleteId: String) {
+        removeAllChildCoordinatorsWith(type: FanHomeCoordinator.self)
+        let huddleCoordinator = HuddleCoordinator(controller: controller,
+                                                  quizService: quizService,
+                                                  athleteId: athleteId)
+        huddleCoordinator.start()
+    }
+    
     func logOut(with controller: UINavigationController) {
+        removeAllChildCoordinatorsWith(type: FanHomeCoordinator.self)
         let authCoordinator = AuthCoordinator(navigationController: navigationController,
                                               authService: authService,
                                               userService: userService)

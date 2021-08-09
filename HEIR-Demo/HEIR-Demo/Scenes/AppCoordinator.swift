@@ -22,6 +22,7 @@ final class AppCoordinator: RootCoordinator {
     func start() {
         guard let window = window else { return }
         let navigationController = UINavigationController()
+        navigationController.isHeroEnabled = true
         
         let authCoordinator = AuthCoordinator(navigationController: navigationController,
                                               authService: AuthService(),

@@ -72,6 +72,10 @@
 		8A94AFC926C05F5B0012BD79 /* FanHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFC526C05F5B0012BD79 /* FanHomeCoordinator.swift */; };
 		8A94AFCA26C05F5B0012BD79 /* FanHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFC626C05F5B0012BD79 /* FanHomeViewModel.swift */; };
 		8A94AFCD26C060F10012BD79 /* AthleteBannerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFCC26C060F10012BD79 /* AthleteBannerComponent.swift */; };
+		8A94AFD326C0A4A80012BD79 /* HuddleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFCF26C0A4A80012BD79 /* HuddleViewController.swift */; };
+		8A94AFD426C0A4A80012BD79 /* HuddleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD026C0A4A80012BD79 /* HuddleCoordinator.swift */; };
+		8A94AFD526C0A4A80012BD79 /* HuddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD126C0A4A80012BD79 /* HuddleView.swift */; };
+		8A94AFD626C0A4A80012BD79 /* HuddleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD226C0A4A80012BD79 /* HuddleViewModel.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +174,10 @@
 		8A94AFC526C05F5B0012BD79 /* FanHomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanHomeCoordinator.swift; sourceTree = "<group>"; };
 		8A94AFC626C05F5B0012BD79 /* FanHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FanHomeViewModel.swift; sourceTree = "<group>"; };
 		8A94AFCC26C060F10012BD79 /* AthleteBannerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteBannerComponent.swift; sourceTree = "<group>"; };
+		8A94AFCF26C0A4A80012BD79 /* HuddleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleViewController.swift; sourceTree = "<group>"; };
+		8A94AFD026C0A4A80012BD79 /* HuddleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleCoordinator.swift; sourceTree = "<group>"; };
+		8A94AFD126C0A4A80012BD79 /* HuddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleView.swift; sourceTree = "<group>"; };
+		8A94AFD226C0A4A80012BD79 /* HuddleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleViewModel.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -489,6 +497,10 @@
 		8A94AFCE26C071FC0012BD79 /* Huddle */ = {
 			isa = PBXGroup;
 			children = (
+				8A94AFD026C0A4A80012BD79 /* HuddleCoordinator.swift */,
+				8A94AFD126C0A4A80012BD79 /* HuddleView.swift */,
+				8A94AFCF26C0A4A80012BD79 /* HuddleViewController.swift */,
+				8A94AFD226C0A4A80012BD79 /* HuddleViewModel.swift */,
 			);
 			path = Huddle;
 			sourceTree = "<group>";
@@ -745,6 +757,8 @@
 				8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */,
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
 				8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */,
+				8A94AFD326C0A4A80012BD79 /* HuddleViewController.swift in Sources */,
+				8A94AFD526C0A4A80012BD79 /* HuddleView.swift in Sources */,
 				8A94AF8D26BE590C0012BD79 /* AthleteHomeCoordinator.swift in Sources */,
 				8A94AFCD26C060F10012BD79 /* AthleteBannerComponent.swift in Sources */,
 				8A94AFB226BF24AE0012BD79 /* CreateQuestionMultipleChoiceComponent.swift in Sources */,
@@ -778,6 +792,8 @@
 				8A94AF7326BD1FEB0012BD79 /* UserService.swift in Sources */,
 				8A94AFAF26BF19610012BD79 /* CreateQuestionViewController.swift in Sources */,
 				8A94AFBD26BFC1280012BD79 /* QuizzesCarouselComponent.swift in Sources */,
+				8A94AFD426C0A4A80012BD79 /* HuddleCoordinator.swift in Sources */,
+				8A94AFD626C0A4A80012BD79 /* HuddleViewModel.swift in Sources */,
 				8A94AF6626BD0C350012BD79 /* PressScalable.swift in Sources */,
 				8A94AF9126BE64100012BD79 /* QuizService.swift in Sources */,
 				8A94AF5D26BD09C90012BD79 /* Fonts.swift in Sources */,

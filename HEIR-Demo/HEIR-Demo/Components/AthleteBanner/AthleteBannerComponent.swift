@@ -16,7 +16,7 @@ final class AthleteBannerComponent: UIView, Component, Pressable {
     }
     
     public var actions: Actions?
-    public let configuration = PressableConfiguration(pressScale: .medium)
+    public var configuration = PressableConfiguration(pressScale: .medium)
     
     private let cardView: UIView = {
         let view = UIView()

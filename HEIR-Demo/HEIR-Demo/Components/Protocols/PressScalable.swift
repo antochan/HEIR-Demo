@@ -12,6 +12,7 @@ public enum PressScale: CGFloat {
     case large = 0.95
     case medium = 0.965
     case small = 0.98
+    case none = 1.0
 }
 
 private enum Constants {

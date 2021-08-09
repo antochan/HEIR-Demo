@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 final class FanHomeView: UIView {
     
@@ -53,6 +54,7 @@ final class FanHomeView: UIView {
     
     let lameloBallCard: AthleteBannerComponent = {
         let component = AthleteBannerComponent()
+        component.hero.id = "LameloCard"
         component.translatesAutoresizingMaskIntoConstraints = false
         component.apply(viewModel: AthleteBannerComponent.ViewModel(bannerImage: #imageLiteral(resourceName: "lameloBanner"),
                                                                     athleteFirstName: "Lamelo",

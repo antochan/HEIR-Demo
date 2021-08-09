@@ -19,10 +19,12 @@ protocol FanHomeViewModelType {
     
     /// Events
     func viewDidLoad()
+    func enterHuddle(with controller: UINavigationController, athleteId: String)
     func logOut(with controller: UINavigationController)
 }
 
 protocol FanHomeViewModelCoordinatorDelegate: AnyObject {
+    func enterHuddle(with controller: UINavigationController, athleteId: String)
     func logOut(with controller: UINavigationController)
 }
 
@@ -55,6 +57,10 @@ extension FanHomeViewModel: FanHomeViewModelType {
     
     func viewDidLoad() {
         viewDelegate?.updateScreen()
+    }
+    
+    func enterHuddle(with controller: UINavigationController, athleteId: String) {
+        coordinatorDelegate?.enterHuddle(with: controller, athleteId: athleteId)
     }
     
     func logOut(with controller: UINavigationController) {
