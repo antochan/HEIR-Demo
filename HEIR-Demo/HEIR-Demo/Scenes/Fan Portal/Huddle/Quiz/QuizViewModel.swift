@@ -106,17 +106,17 @@ extension QuizViewModel: QuizViewModelType {
                                        quizId: quiz.id,
                                        fanId: user.id,
                                        submission: generateSubmission(from: quizSelections,
-                                                                      userId: user.id),
+                                                                      user: user),
                                        quizSelections: quizSelections) { [weak self] result in
                 guard let strongSelf = self else { return }
                 strongSelf.viewDelegate?.loader(shouldShow: false, message: nil)
                 switch result {
                 case .success:
                     strongSelf.coordinatorDelegate?.submit(with: controller,
-                                                      quiz: strongSelf.quiz)
+                                                           quiz: strongSelf.quiz)
                 case .failure(let error):
                     strongSelf.viewDelegate?.presentError(title: "Couldn't complete quiz",
-                                                     message: error.errorDescription)
+                                                          message: error.errorDescription)
                 }
             }
         } else {
@@ -145,7 +145,7 @@ extension QuizViewModel {
     }
 }
 
-private func generateSubmission(from quizSelections: [QuizSelection], userId: String) -> Submission {
+private func generateSubmission(from quizSelections: [QuizSelection], user: User) -> Submission {
     var totalPoints = 0
     for selection in quizSelections {
         // Fan got the right answer, use time to determine point
@@ -164,7 +164,9 @@ private func generateSubmission(from quizSelections: [QuizSelection], userId: St
             }
         }
     }
-    return Submission(id: userId,
+    return Submission(id: user.id,
                       points: Double(totalPoints),
-                      submittedAt: Date().timeIntervalSince1970)
+                      submittedAt: Date().timeIntervalSince1970,
+                      fanName: user.fullName,
+                      fanImageURL: user.userImageURL)
 }

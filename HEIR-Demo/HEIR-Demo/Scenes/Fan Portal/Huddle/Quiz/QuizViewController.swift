@@ -24,7 +24,7 @@ final class QuizViewController: UIViewController {
         super.loadView()
         view = quizView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActions()
@@ -46,7 +46,7 @@ extension QuizViewController: QuizViewModelViewDelegate {
         quizView.rewardTitleLabel.text = "Chance to Win\n\(viewModel.quiz.reward.title)"
         
         quizView.questionsCarousel.apply(viewModel: QuizQuestionsCarouselComponent.ViewModel(questions: viewModel.questions,
-                                                        selectedOption: viewModel.currentQuizSelection?.selectedAnswer))
+                                                                                             selectedOption: viewModel.currentQuizSelection?.selectedAnswer))
         quizView.questionsCarousel.scrollTo(page: viewModel.currentQuestionIndex)
         quizView.questionsCarousel.delegate = self
         

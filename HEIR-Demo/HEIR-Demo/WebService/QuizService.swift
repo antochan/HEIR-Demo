@@ -14,6 +14,8 @@ final class QuizService {
     typealias uploadQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     typealias deleteQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     typealias uploadQuizSubmissionCompletion = (_ result: Result<Bool, AppError>) -> Void
+    typealias getSubmissionsCompletion = (_ result: Result<[Submission], AppError>) -> Void
+    typealias getQuizSelectionsCompletion = (_ result: Result<[QuizSelection], AppError>) -> Void
     
     func getQuizzes(athleteId: String, completion: @escaping getQuizzesCompletion) {
         CollectionReference.toLocation(.quiz)
@@ -163,5 +165,63 @@ final class QuizService {
                 completion(.success(true))
             }
         }
+    }
+    
+    func fetchSubmissions(athleteId: String, quizId: String, completion: @escaping getSubmissionsCompletion) {
+        CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quizId)
+            .collection("submissions")
+            .order(by: "points", descending: true)
+            .limit(to: 3)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(.failure(.network(type: .custom(errorCode: error.code,
+                                                               errorDescription: error.localizedDescription))))
+                }
+                
+                var submissions: [Submission] = []
+                for document in snapshot?.documents ?? [] {
+                    let submission: Submission
+                    do {
+                        try submission = FirestoreDecoder().decode(Submission.self, from: document.data())
+                        submissions.append(submission)
+                    } catch let decodeError {
+                        completion(.failure(.file(type: .custom(errorDescription: decodeError.localizedDescription))))
+                    }
+                }
+                
+                completion(.success(submissions))
+            }
+    }
+    
+    func fetchQuizSelections(athleteId: String, quizId: String, fanId: String, completion: @escaping getQuizSelectionsCompletion) {
+        CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quizId)
+            .collection("submissions")
+            .document(fanId)
+            .collection("selections")
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    completion(.failure(.network(type: .custom(errorCode: error.code,
+                                                               errorDescription: error.localizedDescription))))
+                }
+                
+                var quizSelections: [QuizSelection] = []
+                for document in snapshot?.documents ?? [] {
+                    let quizSelection: QuizSelection
+                    do {
+                        try quizSelection = FirestoreDecoder().decode(QuizSelection.self, from: document.data())
+                        quizSelections.append(quizSelection)
+                    } catch let decodeError {
+                        completion(.failure(.file(type: .custom(errorDescription: decodeError.localizedDescription))))
+                    }
+                }
+                
+                completion(.success(quizSelections))
+            }
     }
 }

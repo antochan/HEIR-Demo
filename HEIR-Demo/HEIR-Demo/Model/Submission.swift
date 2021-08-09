@@ -11,4 +11,6 @@ struct Submission: Codable {
     let id: String
     let points: Double
     let submittedAt: Double
+    let fanName: String
+    let fanImageURL: URL?
 }

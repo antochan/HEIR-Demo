@@ -64,16 +64,26 @@ final class QuizCoordinator: RootCoordinator, Coordinator {
 
 extension QuizCoordinator: QuizViewModelCoordinatorDelegate {
     func submit(with controller: UIViewController, quiz: Quiz) {
-        controller.modalTransitionStyle = .crossDissolve
-        controller.dismissAlert {
-            controller.dismiss(animated: true) {
-                print(quiz.id)
-            }
-        }
+        removeAllChildCoordinatorsWith(type: QuizCoordinator.self)
+        let quizResultCoordinator = QuizResultCoordinator(baseController: navigationController,
+                                                          controller: controller,
+                                                          quizService: quizService,
+                                                          user: user,
+                                                          athleteId: athleteId,
+                                                          quiz: quiz)
+        quizResultCoordinator.start()
     }
     
     func close(with controller: UIViewController) {
-        controller.modalTransitionStyle = .crossDissolve
-        controller.dismiss(animated: true)
+        removeAllChildCoordinatorsWith(type: QuizCoordinator.self)
+        //controller.modalTransitionStyle = .crossDissolve
+        //controller.dismiss(animated: true)
+        let quizResultCoordinator = QuizResultCoordinator(baseController: navigationController,
+                                                          controller: controller,
+                                                          quizService: quizService,
+                                                          user: user,
+                                                          athleteId: athleteId,
+                                                          quiz: quiz)
+        quizResultCoordinator.start()
     }
 }
