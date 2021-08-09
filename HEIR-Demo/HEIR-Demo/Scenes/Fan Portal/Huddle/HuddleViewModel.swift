@@ -25,7 +25,7 @@ protocol HuddleViewModelType {
 }
 
 protocol HuddleViewModelCoordinatorDelegate: AnyObject {
-    func launchQuiz(with controller: UINavigationController, questions: [Question])
+    func launchQuiz(with controller: UINavigationController, quiz: Quiz, questions: [Question])
     func close(with controller: UINavigationController)
 }
 
@@ -76,13 +76,13 @@ extension HuddleViewModel: HuddleViewModelType {
     }
     
     func launchQuiz(with controller: UINavigationController, quiz: Quiz) {
-        viewDelegate?.loader(shouldShow: true, message: "Launching Quiz")
         quizService.getQuizQuestions(athleteId: athleteId,
                                      quiz: quiz) { [weak self] result in
             self?.viewDelegate?.loader(shouldShow: false, message: nil)
             switch result {
             case .success(let questions):
                 self?.coordinatorDelegate?.launchQuiz(with: controller,
+                                                      quiz: quiz,
                                                       questions: questions)
             case .failure(let error):
                 self?.viewDelegate?.presentError(title: "Something went wrong",

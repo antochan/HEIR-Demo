@@ -95,7 +95,9 @@ extension HuddleViewController {
 extension HuddleViewController: QuizzesCarouselComponentDelegate {
     func quizSelected(quiz: Quiz) {
         // TODO : Do logic around the launch time etc for now always launch quiz
-        print(quiz)
+        guard let controller = navigationController else { return }
+        viewModel?.launchQuiz(with: controller,
+                              quiz: quiz)
     }
     
     func quizDelete(quiz: Quiz) {

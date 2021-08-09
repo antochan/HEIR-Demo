@@ -57,8 +57,15 @@ final class HuddleCoordinator: RootCoordinator, Coordinator {
 
 extension HuddleCoordinator: HuddleViewModelCoordinatorDelegate {
     
-    func launchQuiz(with controller: UINavigationController, questions: [Question]) {
+    func launchQuiz(with controller: UINavigationController, quiz: Quiz, questions: [Question]) {
+        removeAllChildCoordinatorsWith(type: HuddleCoordinator.self)
         
+        let quizCoordinator = QuizCoordinator(controller: controller,
+                                              quizService: quizService,
+                                              athleteId: athleteId,
+                                              quiz: quiz,
+                                              questions: questions)
+        quizCoordinator.start()
     }
     
     func close(with controller: UINavigationController) {
