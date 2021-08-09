@@ -90,7 +90,7 @@ final class QuizResultView: UIView {
     
     private let leaderboardTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.SFProTextMedium(size: 16)
+        label.font = UIFont.SFProTextMedium(size: 14)
         label.textColor = Color.Primary.White
         label.text = "Leaderboard"
         return label
@@ -116,7 +116,7 @@ final class QuizResultView: UIView {
     private let performanceTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Color.Primary.White
-        label.font = UIFont.SFProTextMedium(size: 16)
+        label.font = UIFont.SFProTextMedium(size: 14)
         label.text = "Performance Report:"
         return label
     }()
@@ -137,6 +137,14 @@ final class QuizResultView: UIView {
         label.text = "Dummy average elapsed time label"
         label.isSkeletonable = true
         return label
+    }()
+    
+    let quizSolutionResultStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = Spacing.sixteen
+        return stackView
     }()
     
     override init(frame: CGRect) {
@@ -168,13 +176,14 @@ private extension QuizResultView {
         
         quizCompleteStack.addArrangedSubviews(quizCompleteTitleLabel, fanNameLabel)
         leaderboardStack.addArrangedSubviews(leaderboardTitleLabel, leadersStack)
-        performanceStack.addArrangedSubviews(performanceTitleLabel, scoreLabel, averageElapsedTimeLabel)
+        performanceStack.addArrangedSubviews(performanceTitleLabel, scoreLabel, averageElapsedTimeLabel, quizSolutionResultStack)
         
         contentStackView.setCustomSpacing(Spacing.fortyEight, after: quizCompleteStack)
         contentStackView.setCustomSpacing(Spacing.forty, after: leaderboardStack)
         
         performanceStack.setCustomSpacing(Spacing.eight, after: performanceTitleLabel)
         performanceStack.setCustomSpacing(2.0, after: scoreLabel)
+        performanceStack.setCustomSpacing(Spacing.sixteen, after: averageElapsedTimeLabel)
     }
     
     func configureLayout() {
