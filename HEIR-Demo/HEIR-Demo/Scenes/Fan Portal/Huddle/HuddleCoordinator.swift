@@ -18,7 +18,8 @@ final class HuddleCoordinator: RootCoordinator, Coordinator {
     
     lazy var huddleViewModel: HuddleViewModel? = {
         let viewModel = HuddleViewModel(quizService: quizService,
-                                        athleteId: athleteId)
+                                        athleteId: athleteId,
+                                        user: user)
         viewModel.coordinatorDelegate = self
         return viewModel
     }()
@@ -69,6 +70,18 @@ extension HuddleCoordinator: HuddleViewModelCoordinatorDelegate {
                                               quiz: quiz,
                                               questions: questions)
         quizCoordinator.start()
+    }
+    
+    func launchQuizResult(with controller: UINavigationController, quiz: Quiz) {
+        removeAllChildCoordinatorsWith(type: HuddleCoordinator.self)
+        
+        let quizResultCoordinator = QuizResultCoordinator(baseController: controller,
+                                                    controller: controller.topViewController,
+                                                    quizService: quizService,
+                                                    user: user,
+                                                    athleteId: athleteId,
+                                                    quiz: quiz)
+        quizResultCoordinator.start()
     }
     
     func close(with controller: UINavigationController) {

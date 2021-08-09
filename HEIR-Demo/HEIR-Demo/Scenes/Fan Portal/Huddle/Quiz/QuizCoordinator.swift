@@ -42,7 +42,9 @@ final class QuizCoordinator: RootCoordinator, Coordinator {
         quizViewController.viewModel = quizViewModel
         quizViewController.modalPresentationStyle = .fullScreen
         quizViewController.modalTransitionStyle = .crossDissolve
-        navigationController.present(quizViewController, animated: true)
+        navigationController.dismissAlert {
+            self.navigationController.present(quizViewController, animated: true)
+        }
         
         addChildCoordinator(self)
     }
@@ -76,14 +78,7 @@ extension QuizCoordinator: QuizViewModelCoordinatorDelegate {
     
     func close(with controller: UIViewController) {
         removeAllChildCoordinatorsWith(type: QuizCoordinator.self)
-        //controller.modalTransitionStyle = .crossDissolve
-        //controller.dismiss(animated: true)
-        let quizResultCoordinator = QuizResultCoordinator(baseController: navigationController,
-                                                          controller: controller,
-                                                          quizService: quizService,
-                                                          user: user,
-                                                          athleteId: athleteId,
-                                                          quiz: quiz)
-        quizResultCoordinator.start()
+        controller.modalTransitionStyle = .crossDissolve
+        controller.dismiss(animated: true)
     }
 }

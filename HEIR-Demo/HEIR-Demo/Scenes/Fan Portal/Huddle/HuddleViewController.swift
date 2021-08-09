@@ -98,6 +98,15 @@ extension HuddleViewController: QuizzesCarouselComponentDelegate {
         guard let controller = navigationController else { return }
         viewModel?.launchQuiz(with: controller,
                               quiz: quiz)
+        
+        // If we are in between the launch and end or the launch has closed
+        if Date().timeIntervalSince1970 >= quiz.launchTime {
+            
+        }
+        // We are waiting for launch
+        else {
+            displayAlert(message: "This quiz is not available to be taken yet.", title: "Slow Down!")
+        }
     }
     
     func quizDelete(quiz: Quiz) {

@@ -16,6 +16,7 @@ final class QuizService {
     typealias uploadQuizSubmissionCompletion = (_ result: Result<Bool, AppError>) -> Void
     typealias getSubmissionsCompletion = (_ result: Result<[Submission], AppError>) -> Void
     typealias getQuizSelectionsCompletion = (_ result: Result<[QuizSelection], AppError>) -> Void
+    typealias getHasSubmittedQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     
     func getQuizzes(athleteId: String, completion: @escaping getQuizzesCompletion) {
         CollectionReference.toLocation(.quiz)
@@ -222,6 +223,27 @@ final class QuizService {
                 }
                 
                 completion(.success(quizSelections))
+            }
+    }
+    
+    func fetchHasMadeSubmission(athleteId: String, quizId: String, fanId: String, completion: @escaping getHasSubmittedQuizCompletion) {
+        CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quizId)
+            .collection("submissions")
+            .document(fanId)
+            .getDocument { (document, error) in
+                if let error = error {
+                    completion(.failure(.network(type: .custom(errorCode: error.code,
+                                                               errorDescription: error.localizedDescription))))
+                }
+                
+                if let document = document, document.exists {
+                    completion(.success(true))
+                } else {
+                    completion(.success(false))
+                }
             }
     }
 }

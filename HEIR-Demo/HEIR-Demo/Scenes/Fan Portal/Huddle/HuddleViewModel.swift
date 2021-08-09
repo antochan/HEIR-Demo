@@ -15,17 +15,20 @@ protocol HuddleViewModelType {
     // Data Source
     var quizService: QuizService { get }
     var athleteId: String { get }
+    var user: User { get }
     var quizzes: [Quiz] { get }
     
     /// Events
     func viewDidLoad()
     func fetchQuizzes()
+    func fetchHasMadeSubmission(with controller: UINavigationController, quiz: Quiz)
     func launchQuiz(with controller: UINavigationController, quiz: Quiz)
     func close(with controller: UINavigationController)
 }
 
 protocol HuddleViewModelCoordinatorDelegate: AnyObject {
     func launchQuiz(with controller: UINavigationController, quiz: Quiz, questions: [Question])
+    func launchQuizResult(with controller: UINavigationController, quiz: Quiz)
     func close(with controller: UINavigationController)
 }
 
@@ -44,11 +47,13 @@ final class HuddleViewModel {
     // MARK: - Properties
     var quizService: QuizService
     var athleteId: String
+    var user: User
     var quizzes: [Quiz] = []
     
-    init(quizService: QuizService, athleteId: String) {
+    init(quizService: QuizService, athleteId: String, user: User) {
         self.quizService = quizService
         self.athleteId = athleteId
+        self.user = user
     }
     
 }
@@ -75,20 +80,42 @@ extension HuddleViewModel: HuddleViewModelType {
         }
     }
     
-    func launchQuiz(with controller: UINavigationController, quiz: Quiz) {
-        quizService.getQuizQuestions(athleteId: athleteId,
-                                     quiz: quiz) { [weak self] result in
-            self?.viewDelegate?.loader(shouldShow: false, message: nil)
+    func fetchHasMadeSubmission(with controller: UINavigationController, quiz: Quiz) {
+        viewDelegate?.loader(shouldShow: true, message: "Launching...")
+        quizService.fetchHasMadeSubmission(athleteId: athleteId,
+                                           quizId: quiz.id,
+                                           fanId: user.id) { [weak self] result in
+            guard let strongSelf = self else { return }
             switch result {
-            case .success(let questions):
-                self?.coordinatorDelegate?.launchQuiz(with: controller,
-                                                      quiz: quiz,
-                                                      questions: questions)
+            case .success(let hasSubmitted):
+                if hasSubmitted {
+                    strongSelf.viewDelegate?.loader(shouldShow: false, message: nil)
+                    strongSelf.coordinatorDelegate?.launchQuizResult(with: controller, quiz: quiz)
+                }
+                else {
+                    strongSelf.quizService.getQuizQuestions(athleteId: strongSelf.athleteId,
+                                                            quiz: quiz) { result in
+                        strongSelf.viewDelegate?.loader(shouldShow: false, message: nil)
+                        switch result {
+                        case .success(let questions):
+                            strongSelf.coordinatorDelegate?.launchQuiz(with: controller,
+                                                                       quiz: quiz,
+                                                                       questions: questions)
+                        case .failure(let error):
+                            strongSelf.viewDelegate?.presentError(title: "Something went wrong",
+                                                                  message: error.errorDescription)
+                        }
+                    }
+                }
             case .failure(let error):
-                self?.viewDelegate?.presentError(title: "Something went wrong",
-                                                 message: error.errorDescription)
+                strongSelf.viewDelegate?.presentError(title: "Something went wrong",
+                                                      message: error.errorDescription)
             }
         }
+    }
+    
+    func launchQuiz(with controller: UINavigationController, quiz: Quiz) {
+        fetchHasMadeSubmission(with: controller, quiz: quiz)
     }
     
     func close(with controller: UINavigationController) {

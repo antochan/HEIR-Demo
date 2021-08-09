@@ -12,7 +12,7 @@ final class QuizResultCoordinator: RootCoordinator, Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     
     private let baseController: UINavigationController
-    private let controller: UIViewController
+    private let controller: UIViewController?
     private let quizService: QuizService
     private let user: User
     private let athleteId: String
@@ -27,7 +27,7 @@ final class QuizResultCoordinator: RootCoordinator, Coordinator {
         return viewModel
     }()
     
-    init(baseController: UINavigationController, controller: UIViewController, quizService: QuizService, user: User, athleteId: String, quiz: Quiz) {
+    init(baseController: UINavigationController, controller: UIViewController?, quizService: QuizService, user: User, athleteId: String, quiz: Quiz) {
         self.baseController = baseController
         self.controller = controller
         self.quizService = quizService
@@ -41,7 +41,9 @@ final class QuizResultCoordinator: RootCoordinator, Coordinator {
         quizResultViewController.viewModel = quizResultViewModel
         quizResultViewController.modalPresentationStyle = .fullScreen
         quizResultViewController.modalTransitionStyle = .crossDissolve
-        controller.present(quizResultViewController, animated: true)
+        controller?.dismissAlert(completion: {
+            self.controller?.present(quizResultViewController, animated: true)
+        })
         
         addChildCoordinator(self)
     }
