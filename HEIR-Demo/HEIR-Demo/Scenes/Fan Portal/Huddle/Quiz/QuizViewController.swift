@@ -44,7 +44,7 @@ extension QuizViewController: QuizViewModelViewDelegate {
         guard let viewModel = viewModel else { return }
         
         quizView.rewardTitleLabel.text = "Chance to Win\n\(viewModel.quiz.reward.title)"
-        print(viewModel.questions)
+        quizView.questionsCarousel.apply(viewModel: QuizQuestionsCarouselComponent.ViewModel(questions: viewModel.questions))
     }
     
     func loading(_ isLoading: Bool) {

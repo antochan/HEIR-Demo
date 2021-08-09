@@ -35,6 +35,25 @@ final class QuizView: UIView {
         button.imageEdgeInsets = UIEdgeInsets(top: Spacing.eight, left: Spacing.eight, bottom: Spacing.eight, right: Spacing.eight)
         return button
     }()
+    
+    let quizContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let questionsCarousel: QuizQuestionsCarouselComponent = {
+        let component = QuizQuestionsCarouselComponent()
+        component.translatesAutoresizingMaskIntoConstraints = false
+        return component
+    }()
+    
+    let submitButton: ButtonComponent = {
+        let button = ButtonComponent()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Submit"))
+        return button
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,7 +76,8 @@ private extension QuizView {
     }
     
     func configureSubviews() {
-        addSubviews(backgroundView, closeButton, rewardTitleLabel)
+        addSubviews(backgroundView, closeButton, rewardTitleLabel, submitButton, quizContentView)
+        quizContentView.addSubview(questionsCarousel)
     }
     
     func configureLayout() {
@@ -73,7 +93,21 @@ private extension QuizView {
             closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.sixteen),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.twentyFour),
             closeButton.heightAnchor.constraint(equalToConstant: 25),
-            closeButton.widthAnchor.constraint(equalToConstant: 25)
+            closeButton.widthAnchor.constraint(equalToConstant: 25),
+            
+            quizContentView.topAnchor.constraint(equalTo: rewardTitleLabel.bottomAnchor, constant: Spacing.sixteen),
+            quizContentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.sixteen),
+            quizContentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.sixteen),
+            quizContentView.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -Spacing.sixteen),
+            
+            questionsCarousel.centerYAnchor.constraint(equalTo: quizContentView.centerYAnchor),
+            questionsCarousel.leadingAnchor.constraint(equalTo: quizContentView.leadingAnchor),
+            questionsCarousel.trailingAnchor.constraint(equalTo: quizContentView.trailingAnchor),
+            questionsCarousel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            
+            submitButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Spacing.thirtyTwo),
+            submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            submitButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     

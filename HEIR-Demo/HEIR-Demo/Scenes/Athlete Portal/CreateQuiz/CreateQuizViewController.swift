@@ -76,7 +76,7 @@ extension CreateQuizViewController: CreateQuizViewModelViewDelegate {
         for (index, question) in viewModel.questions.enumerated() {
             createQuizView.questionStack.addArrangedSubviews(createMultipleChoiceView(question: question,
                                                                                       totalQuestionCount: viewModel.questions.count,
-                                                                                      questionIndex: index + 1))
+                                                                                      questionIndex: index))
         }
         
         createQuizView.createQuizButton.isEnabled = viewModel.isFormComplete

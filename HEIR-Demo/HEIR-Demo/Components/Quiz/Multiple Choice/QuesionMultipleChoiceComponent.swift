@@ -11,7 +11,6 @@ final class QuesionMultipleChoiceComponent: UIView, Component {
     struct ViewModel {
         let answer: String
         let isSelected: Bool
-        let isInteractable: Bool
     }
     
     public var actions: Actions?
@@ -60,6 +59,7 @@ final class QuesionMultipleChoiceComponent: UIView, Component {
     }
     
     func apply(viewModel: ViewModel) {
+        answer = viewModel.answer
         selectButton.backgroundColor = viewModel.isSelected ? Color.Primary.Black.withAlphaComponent(0.5) : .clear
         answerLabel.text = viewModel.answer
     }
@@ -78,6 +78,7 @@ private extension QuesionMultipleChoiceComponent {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         addGestureRecognizer(tap)
+        selectButton.addTarget(self, action: #selector(self.handleTap(_:)), for: .touchUpInside)
     }
     
     func configureLayout() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class QuizQuestionComponent: UIView, Component {
+final class QuizQuestionComponent: UIView, Component, Reusable {
 
     struct ViewModel {
         let isInCreation: Bool
@@ -18,7 +18,8 @@ final class QuizQuestionComponent: UIView, Component {
     
     public var actions: Actions?
     
-    private var question: Question?
+    private var viewModel: ViewModel?
+    private var selectedOption: String?
     
     private let questionCountLabel: UILabel = {
         let label = UILabel()
@@ -64,20 +65,26 @@ final class QuizQuestionComponent: UIView, Component {
     }
     
     func apply(viewModel: ViewModel) {
-        question = viewModel.question
+        self.viewModel = viewModel
         deleteButton.isHidden = !viewModel.isInCreation
         questionCountLabel.textColor = viewModel.isInCreation ? Color.Primary.Black : Color.Primary.White
-        questionCountLabel.text = "Question \(viewModel.currentQuestionIndex) of \(viewModel.totalQuestionCount)"
+        questionCountLabel.text = "Question \(viewModel.currentQuestionIndex + 1) of \(viewModel.totalQuestionCount)"
         questionLabel.text = viewModel.question.question
+        
+        multipleChoiceStack.removeAllArrangedSubviews()
         viewModel.question.options.forEach {
-            multipleChoiceStack.addArrangedSubviews(createMultipleChoiceView(option: $0,
+            multipleChoiceStack.addArrangedSubviews(createInitialMultipleChoiceView(option: $0,
                                                                              isSelected: $0 == viewModel.question.answer,
                                                                              isInCreation: viewModel.isInCreation))
         }
     }
     
+    func prepareForReuse() {
+        multipleChoiceStack.removeAllArrangedSubviews()
+    }
+    
     @objc func deleteTapped() {
-        guard let question = question else { return }
+        guard let question = viewModel?.question else { return }
         actions?(.deleteTapped(question))
     }
 }
@@ -114,13 +121,24 @@ private extension QuizQuestionComponent {
         ])
     }
     
-    func createMultipleChoiceView(option: String, isSelected: Bool, isInCreation: Bool) -> QuesionMultipleChoiceComponent {
+    func createInitialMultipleChoiceView(option: String, isSelected: Bool, isInCreation: Bool) -> QuesionMultipleChoiceComponent {
         let component = QuesionMultipleChoiceComponent()
-        component.apply(viewModel: QuesionMultipleChoiceComponent.ViewModel(answer: option,
-                                                                            isSelected: isSelected,
-                                                                            isInteractable: !isInCreation))
+        let componentVM = QuesionMultipleChoiceComponent.ViewModel(answer: option,
+                                                                   isSelected: isInCreation ? isSelected : selectedOption == option)
+        component.apply(viewModel: componentVM)
+        component.actions = { [weak self] action in
+            switch action {
+            case .selected(let option):
+                self?.selectedOption = option
+                if let viewModel = self?.viewModel {
+                    self?.apply(viewModel: viewModel)
+                    self?.actions?(.selectedOption((viewModel.question, option)))
+                }
+            }
+        }
         return component
     }
+
 }
 
 //MARK: - Actionable
@@ -130,5 +148,6 @@ extension QuizQuestionComponent: Actionable {
     
     public enum Action {
         case deleteTapped(Question)
+        case selectedOption((Question, String))
     }
 }
