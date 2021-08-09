@@ -161,6 +161,7 @@ private extension HuddleView {
             
             moodStack.centerYAnchor.constraint(equalTo: overviewView.centerYAnchor),
             moodStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.thirtyTwo),
+            moodStack.widthAnchor.constraint(equalToConstant: 35),
             
             moodIcon.heightAnchor.constraint(equalToConstant: 22),
             moodIcon.widthAnchor.constraint(equalToConstant: 22),
