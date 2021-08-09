@@ -44,6 +44,7 @@ final class QuizzesCarouselComponent: UIView, Component, Reusable {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = Color.Primary.White
         collectionView.contentInset = UIEdgeInsets(top: 0, left: Spacing.twelve, bottom: 0, right: Spacing.twelve)
+        collectionView.isScrollEnabled = false
         collectionView.isSkeletonable = true
         return collectionView
     }()

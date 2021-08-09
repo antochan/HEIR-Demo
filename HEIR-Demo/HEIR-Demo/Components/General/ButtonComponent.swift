@@ -196,10 +196,9 @@ private extension ButtonComponent {
     }
     
     func applySecondary(hasTitle: Bool, hasImage: Bool) {
-        backgroundColor = .clear
+        backgroundColor = .white
         apply(borderWidth: .normal)
-        layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 2.0
+        layer.borderColor = nil
         setTitleColor(.black, for: .normal)
         setContentInsets(hasTitle: hasTitle,
                          hasImage: hasImage,

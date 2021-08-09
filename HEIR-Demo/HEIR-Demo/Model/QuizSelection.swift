@@ -9,6 +9,6 @@ import UIKit
 
 struct QuizSelection {
     let selectedAnswer: String
-    let answer: String
-    let timeTaken: Double
+    let timeTaken: Int
+    let question: Question
 }

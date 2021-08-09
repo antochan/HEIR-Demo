@@ -253,3 +253,13 @@ extension UIView {
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
 }
+
+extension Int {
+    func timeString() -> String {
+        var h:Int = self / 3600
+        var m:Int = (self/60) % 60
+        var s:Int = self % 60
+        let a = String(format: "%u:%02u:%02u", h,m,s)
+        return a
+    }
+}

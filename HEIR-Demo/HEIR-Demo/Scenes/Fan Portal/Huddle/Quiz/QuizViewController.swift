@@ -45,6 +45,12 @@ extension QuizViewController: QuizViewModelViewDelegate {
         
         quizView.rewardTitleLabel.text = "Chance to Win\n\(viewModel.quiz.reward.title)"
         quizView.questionsCarousel.apply(viewModel: QuizQuestionsCarouselComponent.ViewModel(questions: viewModel.questions))
+        quizView.questionsCarousel.delegate = self
+        quizView.timeElapsedButton.apply(viewModel: ButtonComponent.ViewModel(style: .secondary, text: viewModel.elapsedTime.timeString()))
+        quizView.submitButton.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
+        
+        quizView.questionsCarousel.scrollTo(page: viewModel.currentQuestionIndex)
+        quizView.submitButton.isEnabled = viewModel.currentQuizSelection != nil
     }
     
     func loading(_ isLoading: Bool) {
@@ -72,4 +78,16 @@ extension QuizViewController {
         viewModel?.close(with: self)
     }
     
+    @objc func submitTapped() {
+        viewModel?.submit()
+    }
+}
+
+// MARK: - QuizQuestionCarouselDelegate
+
+extension QuizViewController: QuizQuestionCarouselDelegate {
+    func selectedAnswer(question: Question, selectedAnswer: String) {
+        viewModel?.setSelectedAnswer(selectedAnswer: selectedAnswer,
+                                     question: question)
+    }
 }

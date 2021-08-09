@@ -11,6 +11,7 @@ final class CreateQuestionView: UIView {
     let closeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = Color.Primary.White
         button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 6.0, left: 6.0, bottom: 6.0, right: 6.0)
         return button

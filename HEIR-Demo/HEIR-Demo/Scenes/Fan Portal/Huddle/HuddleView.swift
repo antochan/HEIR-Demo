@@ -111,10 +111,10 @@ final class HuddleView: UIView {
     }
     
     func appearAnimation() {
-        closeButton.fadeIn(duration: 0.4, delay: 0.2)
-        overviewView.fadeIn(duration: 0.4, delay: 0.2)
-        quizzesTitleLabel.fadeIn(duration: 0.4, delay: 0.2)
-        quizzesCarouselComponent.fadeIn(duration: 0.4, delay: 0.2)
+        closeButton.fadeIn(duration: 0.4, delay: 0.1)
+        overviewView.fadeIn(duration: 0.4, delay: 0.1)
+        quizzesTitleLabel.fadeIn(duration: 0.4, delay: 0.1)
+        quizzesCarouselComponent.fadeIn(duration: 0.4, delay: 0.1)
     }
     
 }

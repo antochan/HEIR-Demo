@@ -48,10 +48,24 @@ final class QuizView: UIView {
         return component
     }()
     
+    private let buttonStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.eight
+        return stackView
+    }()
+    
+    let timeElapsedButton: ButtonComponent = {
+        let button = ButtonComponent()
+        button.apply(viewModel: ButtonComponent.ViewModel(style: .secondary, text: "00:00"))
+        return button
+    }()
+    
     let submitButton: ButtonComponent = {
         let button = ButtonComponent()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.apply(viewModel: ButtonComponent.ViewModel(style: .primary, text: "Submit"))
+        button.isEnabled = false
         return button
     }()
 
@@ -76,7 +90,8 @@ private extension QuizView {
     }
     
     func configureSubviews() {
-        addSubviews(backgroundView, closeButton, rewardTitleLabel, submitButton, quizContentView)
+        addSubviews(backgroundView, closeButton, rewardTitleLabel, buttonStack, quizContentView)
+        buttonStack.addArrangedSubviews(timeElapsedButton, submitButton)
         quizContentView.addSubview(questionsCarousel)
     }
     
@@ -105,9 +120,9 @@ private extension QuizView {
             questionsCarousel.trailingAnchor.constraint(equalTo: quizContentView.trailingAnchor),
             questionsCarousel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
             
-            submitButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Spacing.thirtyTwo),
-            submitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
-            submitButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+            buttonStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Spacing.thirtyTwo),
+            buttonStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            buttonStack.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     

@@ -8,6 +8,10 @@
 import UIKit
 import SkeletonView
 
+protocol QuizQuestionCarouselDelegate: AnyObject {
+    func selectedAnswer(question: Question, selectedAnswer: String)
+}
+
 final class QuizQuestionsCarouselComponent: UIView, Component, Reusable {
     struct ViewModel {
         var questions: [Question]
@@ -25,7 +29,7 @@ final class QuizQuestionsCarouselComponent: UIView, Component, Reusable {
         }
     }
     
-    weak var delegate: QuizzesCarouselComponentDelegate?
+    weak var delegate: QuizQuestionCarouselDelegate?
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,7 +39,7 @@ final class QuizQuestionsCarouselComponent: UIView, Component, Reusable {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.clear
-        // collectionView.isScrollEnabled = false
+        collectionView.isScrollEnabled = false
         return collectionView
     }()
     
@@ -55,6 +59,10 @@ final class QuizQuestionsCarouselComponent: UIView, Component, Reusable {
     
     func prepareForReuse() {
         // no-op
+    }
+    
+    func scrollTo(page: Int) {
+        collectionView.scrollToItem(at: IndexPath(row: page, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 
@@ -108,7 +116,8 @@ extension QuizQuestionsCarouselComponent: UICollectionViewDelegate, UICollection
                 /// Not applicable since we cannot delete stuff right now
                 break
             case .selectedOption((let question, let option)):
-                print(option)
+                self?.delegate?.selectedAnswer(question: question,
+                                               selectedAnswer: option)
             }
         }
         cell.apply(viewModel: cellVM)
