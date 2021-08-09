@@ -21,7 +21,7 @@ protocol HuddleViewModelType {
     /// Events
     func viewDidLoad()
     func fetchQuizzes()
-    func fetchHasMadeSubmission(with controller: UINavigationController, quiz: Quiz)
+    func launchQuizResultIfPossible(with controller: UINavigationController, quiz: Quiz)
     func launchQuiz(with controller: UINavigationController, quiz: Quiz)
     func close(with controller: UINavigationController)
 }
@@ -80,7 +80,30 @@ extension HuddleViewModel: HuddleViewModelType {
         }
     }
     
-    func fetchHasMadeSubmission(with controller: UINavigationController, quiz: Quiz) {
+    func launchQuizResultIfPossible(with controller: UINavigationController, quiz: Quiz) {
+        viewDelegate?.loader(shouldShow: true, message: "Checking...")
+        quizService.fetchHasMadeSubmission(athleteId: athleteId,
+                                           quizId: quiz.id,
+                                           fanId: user.id) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let hasSubmitted):
+                if hasSubmitted {
+                    strongSelf.viewDelegate?.loader(shouldShow: false, message: nil)
+                    strongSelf.coordinatorDelegate?.launchQuizResult(with: controller, quiz: quiz)
+                }
+                else {
+                    strongSelf.viewDelegate?.presentError(title: "You didn't make it",
+                                                          message: "Sorry, you didn't participate in the quiz on time!")
+                }
+            case .failure(let error):
+                strongSelf.viewDelegate?.presentError(title: "Something went wrong",
+                                                      message: error.errorDescription)
+            }
+        }
+    }
+    
+    func launchQuiz(with controller: UINavigationController, quiz: Quiz) {
         viewDelegate?.loader(shouldShow: true, message: "Launching...")
         quizService.fetchHasMadeSubmission(athleteId: athleteId,
                                            quizId: quiz.id,
@@ -112,10 +135,7 @@ extension HuddleViewModel: HuddleViewModelType {
                                                       message: error.errorDescription)
             }
         }
-    }
-    
-    func launchQuiz(with controller: UINavigationController, quiz: Quiz) {
-        fetchHasMadeSubmission(with: controller, quiz: quiz)
+
     }
     
     func close(with controller: UINavigationController) {
