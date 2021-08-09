@@ -76,6 +76,7 @@
 		8A94AFD426C0A4A80012BD79 /* HuddleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD026C0A4A80012BD79 /* HuddleCoordinator.swift */; };
 		8A94AFD526C0A4A80012BD79 /* HuddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD126C0A4A80012BD79 /* HuddleView.swift */; };
 		8A94AFD626C0A4A80012BD79 /* HuddleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD226C0A4A80012BD79 /* HuddleViewModel.swift */; };
+		8A94AFD826C0CB210012BD79 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFD726C0CB210012BD79 /* RoundedShadowView.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,7 @@
 		8A94AFD026C0A4A80012BD79 /* HuddleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleCoordinator.swift; sourceTree = "<group>"; };
 		8A94AFD126C0A4A80012BD79 /* HuddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleView.swift; sourceTree = "<group>"; };
 		8A94AFD226C0A4A80012BD79 /* HuddleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HuddleViewModel.swift; sourceTree = "<group>"; };
+		8A94AFD726C0CB210012BD79 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -482,6 +484,7 @@
 				8A94AF6926BD0C550012BD79 /* ButtonComponent.swift */,
 				8A94AFBF26BFC1B40012BD79 /* ComponentCollectionViewCell.swift */,
 				8A94AFC026BFC1B40012BD79 /* ComponentTableViewCell.swift */,
+				8A94AFD726C0CB210012BD79 /* RoundedShadowView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				8A94AF9626BE69E90012BD79 /* QuizOverviewComponent.swift in Sources */,
 				8A94AF7826BD21520012BD79 /* AccountType.swift in Sources */,
 				8A94AF9F26BE8F790012BD79 /* CreateQuizView.swift in Sources */,
+				8A94AFD826C0CB210012BD79 /* RoundedShadowView.swift in Sources */,
 				8A94AF6C26BD0C800012BD79 /* Constants.swift in Sources */,
 				8A94AF1126BCFA4D0012BD79 /* AppDelegate.swift in Sources */,
 				8A94AF7126BD184D0012BD79 /* AuthService.swift in Sources */,

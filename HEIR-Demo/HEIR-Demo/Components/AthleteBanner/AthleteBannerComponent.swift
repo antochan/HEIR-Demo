@@ -9,6 +9,7 @@ import UIKit
 
 final class AthleteBannerComponent: UIView, Component, Pressable {
     struct ViewModel {
+        let cardColor: UIColor
         let bannerImage: UIImage // would be URL when API ready
         let athleteFirstName: String
         let athleteLastName: String
@@ -22,7 +23,6 @@ final class AthleteBannerComponent: UIView, Component, Pressable {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 15
-        view.backgroundColor = Color.Primary.OffWhite
         view.isSkeletonable = true
         return view
     }()
@@ -78,6 +78,7 @@ final class AthleteBannerComponent: UIView, Component, Pressable {
     }
     
     func apply(viewModel: ViewModel) {
+        cardView.backgroundColor = viewModel.cardColor
         bannerImageView.image = viewModel.bannerImage
         athleteNameLabel.text = "\(viewModel.athleteFirstName)\n\(viewModel.athleteLastName)"
         teamNameLabel.text = "\(viewModel.teamName)'"

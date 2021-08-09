@@ -28,6 +28,9 @@ final class HuddleViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        huddleView.appearAnimation()
+        viewModel?.viewDidLoad()
     }
     
     override func viewDidLoad() {
@@ -45,11 +48,21 @@ final class HuddleViewController: UIViewController {
 extension HuddleViewController: HuddleViewModelViewDelegate {
     
     func updateScreen() {
-
+        guard let viewModel = viewModel else { return }
+        huddleView.quizzesCarouselComponent.apply(viewModel: QuizzesCarouselComponent.ViewModel(quizzes: viewModel.quizzes,
+                                                                                                isAthletePortal: false))
     }
     
     func loading(_ isLoading: Bool) {
-        
+        if isLoading {
+            huddleView.quizzesCarouselComponent.collectionView.prepareSkeleton { _ in
+                self.huddleView.quizzesCarouselComponent.collectionView.showAnimatedGradientSkeleton()
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                self.huddleView.quizzesCarouselComponent.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+            })
+        }
     }
     
     func presentError(title: String, message: String?) {

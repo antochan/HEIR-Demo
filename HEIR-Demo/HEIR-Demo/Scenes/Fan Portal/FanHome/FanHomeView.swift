@@ -56,7 +56,8 @@ final class FanHomeView: UIView {
         let component = AthleteBannerComponent()
         component.hero.id = "LameloCard"
         component.translatesAutoresizingMaskIntoConstraints = false
-        component.apply(viewModel: AthleteBannerComponent.ViewModel(bannerImage: #imageLiteral(resourceName: "lameloBanner"),
+        component.apply(viewModel: AthleteBannerComponent.ViewModel(cardColor: Color.Primary.OffWhite,
+                                                                    bannerImage: #imageLiteral(resourceName: "lameloBanner"),
                                                                     athleteFirstName: "Lamelo",
                                                                     athleteLastName: "Ball",
                                                                     teamName: "Charlotte Hornets"))
