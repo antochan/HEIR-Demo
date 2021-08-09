@@ -58,7 +58,8 @@ final class CreateQuizViewController: UIViewController {
         component.apply(viewModel: QuizQuestionComponent.ViewModel(isInCreation: true,
                                                                    question: question,
                                                                    totalQuestionCount: totalQuestionCount,
-                                                                   currentQuestionIndex: questionIndex))
+                                                                   currentQuestionIndex: questionIndex,
+                                                                   selectedOption: nil))
         return component
     }
 }

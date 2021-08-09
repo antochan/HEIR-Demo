@@ -15,12 +15,14 @@ protocol QuizQuestionCarouselDelegate: AnyObject {
 final class QuizQuestionsCarouselComponent: UIView, Component, Reusable {
     struct ViewModel {
         var questions: [Question]
+        var selectedOption: String?
         
-        init(questions: [Question]) {
+        init(questions: [Question], selectedOption: String?) {
             self.questions = questions
+            self.selectedOption = selectedOption
         }
         
-        static let defaultViewModel = ViewModel(questions: [])
+        static let defaultViewModel = ViewModel(questions: [], selectedOption: nil)
     }
     
     private var viewModel = ViewModel.defaultViewModel {
@@ -109,7 +111,8 @@ extension QuizQuestionsCarouselComponent: UICollectionViewDelegate, UICollection
         let cellVM = ComponentCollectionViewCell<QuizQuestionComponent>.ViewModel(componentViewModel: QuizQuestionComponent.ViewModel(isInCreation: false,
                                                                                                                                       question: viewModel.questions[indexPath.row],
                                                                                                                                       totalQuestionCount: viewModel.questions.count,
-                                                                                                                                      currentQuestionIndex: indexPath.row))
+                                                                                                                                      currentQuestionIndex: indexPath.row,
+                                                                                                                                      selectedOption: viewModel.selectedOption))
         cell.component.actions = { [weak self] action in
             switch action {
             case .deleteTapped:

@@ -13,6 +13,7 @@ final class QuizService {
     typealias getQuizCompletion = (_ result: Result<[Question], AppError>) -> Void
     typealias uploadQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
     typealias deleteQuizCompletion = (_ result: Result<Bool, AppError>) -> Void
+    typealias uploadQuizSubmissionCompletion = (_ result: Result<Bool, AppError>) -> Void
     
     func getQuizzes(athleteId: String, completion: @escaping getQuizzesCompletion) {
         CollectionReference.toLocation(.quiz)
@@ -119,5 +120,48 @@ final class QuizService {
                     completion(.success(true))
                 }
             }
+    }
+    
+    func makeSubmission(athleteId: String, quizId: String, fanId: String, submission: Submission, quizSelections: [QuizSelection], completion: @escaping uploadQuizSubmissionCompletion) {
+        let quizFanSubmissionRef = CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quizId)
+            .collection("submissions")
+            .document(fanId)
+        
+        let quizFanQuizSelectionRef = CollectionReference.toLocation(.quiz)
+            .document(athleteId)
+            .collection("quizzes")
+            .document(quizId)
+            .collection("submissions")
+            .document(fanId)
+            .collection("selections")
+        
+        let batch = Firestore.firestore().batch()
+        
+        guard let submissionDict = submission.dict else {
+            completion(.failure(.custom(errorDescription: "Unable to encode `Submission`")))
+            return
+        }
+        batch.setData(submissionDict, forDocument: quizFanSubmissionRef)
+        
+        quizSelections.forEach {
+            guard let quizSelectionDict = $0.dict else {
+                completion(.failure(.custom(errorDescription: "Unable to encode `Question`")))
+                return
+            }
+            batch.setData(quizSelectionDict, forDocument: quizFanQuizSelectionRef.document($0.id))
+        }
+        
+        batch.commit() { error in
+            if let error = error {
+                completion(.failure(.network(type: .custom(errorCode: error.code,
+                                                           errorDescription: error.localizedDescription))
+                ))
+            } else {
+                completion(.success(true))
+            }
+        }
     }
 }

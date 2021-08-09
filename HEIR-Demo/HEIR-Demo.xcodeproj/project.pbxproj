@@ -83,6 +83,7 @@
 		8A94AFE126C0E2460012BD79 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFDD26C0E2460012BD79 /* QuizView.swift */; };
 		8A94AFE326C0F0890012BD79 /* QuizSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFE226C0F0890012BD79 /* QuizSelection.swift */; };
 		8A94AFE626C0F5B60012BD79 /* QuizQuestionsCarouselComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFE526C0F5B60012BD79 /* QuizQuestionsCarouselComponent.swift */; };
+		8A94AFE826C186B20012BD79 /* Submission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94AFE726C186B20012BD79 /* Submission.swift */; };
 		92DD5E043E0FFC2FEA935447 /* Pods_HEIR_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +193,7 @@
 		8A94AFDD26C0E2460012BD79 /* QuizView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		8A94AFE226C0F0890012BD79 /* QuizSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelection.swift; sourceTree = "<group>"; };
 		8A94AFE526C0F5B60012BD79 /* QuizQuestionsCarouselComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionsCarouselComponent.swift; sourceTree = "<group>"; };
+		8A94AFE726C186B20012BD79 /* Submission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Submission.swift; sourceTree = "<group>"; };
 		ABF7547CD0016F3376427FDC /* Pods_HEIR_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HEIR_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -401,6 +403,7 @@
 				8A94AF7B26BD87470012BD79 /* AppError.swift */,
 				8A94AFB426BF3B0B0012BD79 /* MultipleChoice.swift */,
 				8A94AFE226C0F0890012BD79 /* QuizSelection.swift */,
+				8A94AFE726C186B20012BD79 /* Submission.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				8A94AFAF26BF19610012BD79 /* CreateQuestionViewController.swift in Sources */,
 				8A94AFBD26BFC1280012BD79 /* QuizzesCarouselComponent.swift in Sources */,
 				8A94AFD426C0A4A80012BD79 /* HuddleCoordinator.swift in Sources */,
+				8A94AFE826C186B20012BD79 /* Submission.swift in Sources */,
 				8A94AFD626C0A4A80012BD79 /* HuddleViewModel.swift in Sources */,
 				8A94AF6626BD0C350012BD79 /* PressScalable.swift in Sources */,
 				8A94AF9126BE64100012BD79 /* QuizService.swift in Sources */,

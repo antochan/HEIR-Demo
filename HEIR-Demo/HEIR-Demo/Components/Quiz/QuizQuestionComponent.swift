@@ -8,18 +8,18 @@
 import UIKit
 
 final class QuizQuestionComponent: UIView, Component, Reusable {
-
+    
     struct ViewModel {
         let isInCreation: Bool
         let question: Question
         let totalQuestionCount: Int
         let currentQuestionIndex: Int
+        let selectedOption: String?
     }
     
     public var actions: Actions?
     
     private var viewModel: ViewModel?
-    private var selectedOption: String?
     
     private let questionCountLabel: UILabel = {
         let label = UILabel()
@@ -70,10 +70,9 @@ final class QuizQuestionComponent: UIView, Component, Reusable {
         questionCountLabel.textColor = viewModel.isInCreation ? Color.Primary.Black : Color.Primary.White
         questionCountLabel.text = "Question \(viewModel.currentQuestionIndex + 1) of \(viewModel.totalQuestionCount)"
         questionLabel.text = viewModel.question.question
-        
-        multipleChoiceStack.removeAllArrangedSubviews()
         viewModel.question.options.forEach {
-            multipleChoiceStack.addArrangedSubviews(createInitialMultipleChoiceView(option: $0,
+            multipleChoiceStack.addArrangedSubviews(createMultipleChoiceView(option: $0,
+                                                                             selectedOption: viewModel.selectedOption,
                                                                              isSelected: $0 == viewModel.question.answer,
                                                                              isInCreation: viewModel.isInCreation))
         }
@@ -121,7 +120,7 @@ private extension QuizQuestionComponent {
         ])
     }
     
-    func createInitialMultipleChoiceView(option: String, isSelected: Bool, isInCreation: Bool) -> QuesionMultipleChoiceComponent {
+    func createMultipleChoiceView(option: String, selectedOption: String?, isSelected: Bool, isInCreation: Bool) -> QuesionMultipleChoiceComponent {
         let component = QuesionMultipleChoiceComponent()
         let componentVM = QuesionMultipleChoiceComponent.ViewModel(answer: option,
                                                                    isSelected: isInCreation ? isSelected : selectedOption == option)
@@ -129,16 +128,14 @@ private extension QuizQuestionComponent {
         component.actions = { [weak self] action in
             switch action {
             case .selected(let option):
-                self?.selectedOption = option
                 if let viewModel = self?.viewModel {
-                    self?.apply(viewModel: viewModel)
                     self?.actions?(.selectedOption((viewModel.question, option)))
                 }
             }
         }
         return component
     }
-
+    
 }
 
 //MARK: - Actionable

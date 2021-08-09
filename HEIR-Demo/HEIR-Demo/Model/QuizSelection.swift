@@ -7,7 +7,8 @@
 
 import UIKit
 
-struct QuizSelection {
+struct QuizSelection: Codable, Equatable {
+    let id: String
     let selectedAnswer: String
     let timeTaken: Int
     let question: Question

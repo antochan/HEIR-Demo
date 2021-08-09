@@ -62,6 +62,7 @@ extension FanHomeCoordinator: FanHomeViewModelCoordinatorDelegate {
         removeAllChildCoordinatorsWith(type: FanHomeCoordinator.self)
         let huddleCoordinator = HuddleCoordinator(controller: controller,
                                                   quizService: quizService,
+                                                  user: user,
                                                   athleteId: athleteId)
         huddleCoordinator.start()
     }

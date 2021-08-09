@@ -13,6 +13,7 @@ final class HuddleCoordinator: RootCoordinator, Coordinator {
     
     private let navigationController: UINavigationController
     private let quizService: QuizService
+    private let user: User
     private let athleteId: String
     
     lazy var huddleViewModel: HuddleViewModel? = {
@@ -22,9 +23,10 @@ final class HuddleCoordinator: RootCoordinator, Coordinator {
         return viewModel
     }()
     
-    init(controller: UINavigationController, quizService: QuizService, athleteId: String) {
+    init(controller: UINavigationController, quizService: QuizService, user: User, athleteId: String) {
         self.navigationController = controller
         self.quizService = quizService
+        self.user = user
         self.athleteId = athleteId
     }
     
@@ -62,6 +64,7 @@ extension HuddleCoordinator: HuddleViewModelCoordinatorDelegate {
         
         let quizCoordinator = QuizCoordinator(controller: controller,
                                               quizService: quizService,
+                                              user: user,
                                               athleteId: athleteId,
                                               quiz: quiz,
                                               questions: questions)
