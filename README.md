@@ -20,6 +20,6 @@ Make sure to have cocoapod installed on your machine. Here is the [Cocoapod inst
 
 [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) is both the IDE and build system used to run the app. Download and install it from the App Store. Once Xcode is installed open it from spotlight.
 
-Once in Xcode with the StockX.xcworkspace opened, make sure to select the HEIR-Demo Debug scheme, desired simulator, and then press the play button or `CMD + R`  to run the application. For reference the play button, scheme, and simulator are in Xcode's toolbar:
+Once in Xcode with the StockX.xcworkspace opened, make sure to select the `HEIR-Demo` scheme, desired simulator, and then press the play button or `CMD + R`  to run the application. For reference the play button, scheme, and simulator are in Xcode's toolbar:
 
 <img height="35" src="https://user-images.githubusercontent.com/23144735/128809689-9af2bffd-0c45-40dd-af63-3f97aa9310e9.png">
